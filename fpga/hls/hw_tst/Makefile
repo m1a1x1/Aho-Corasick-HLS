@@ -1,4 +1,4 @@
-SOURCE_FILES  := ac.cpp ac_tb.cpp
+SOURCE_FILES  := ac_hw_tst.cpp
 HLS_CXX_FLAGS :=  -I $(INCL_MODELSIM) -I $(INCL_MODELSIM_GNU)
 #HLS_CXX_FLAGS :=  -I /home/heap/questa/questasim/gcc-4.5.0-linux_x86_64/include/c++/4.5.0 \
                   -I /home/heap/questa/questasim/gcc-4.5.0-linux_x86_64/include/c++/4.5.0/x86_64-unknown-linux-gnu
@@ -55,7 +55,7 @@ test-x86-64: $(SOURCE_FILES)
 ifeq ($(VERBOSE),1)
   test-fpga: CXXFLAGS := $(CXXFLAGS) -v
 endif
-test-fpga: CXXFLAGS := $(CXXFLAGS) $(HLS_CXX_FLAGS) -march=5CSEBA6U23I7 -o test-fpga -Wc++11-extensions -Wnon-pod-varargs -ghdl
+test-fpga: CXXFLAGS := $(CXXFLAGS) $(HLS_CXX_FLAGS) -march=5CSEBA6U23I7 -o test-fpga -Wc++11-extensions -Wnon-pod-varargs --fpga-only
 
 test-fpga: $(SOURCE_FILES)
 	$(CXX) $(SOURCE_FILES) $(CXXFLAGS)

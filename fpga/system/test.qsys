@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element Avalon_MM_byteorder_changer_0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element HLS_CTL_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element HLS_CTL_0.slv
+   {
+      datum baseAddress
+      {
+         value = "4096";
+         type = "String";
+      }
+   }
+   element clk_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element handler_0
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element handler_0.avs_cra
+   {
+      datum baseAddress
+      {
+         value = "8192";
+         type = "String";
+      }
+   }
+   element mm_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element module_0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element module_0.avs_cra
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element module_1
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element module_1.avs_cra
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "String";
+      }
+   }
+   element multiplexer_0
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CEBA2F17A7" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface
+   name="amm"
+   internal="Avalon_MM_byteorder_changer_0.mst"
+   type="avalon"
+   dir="start" />
+ <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface name="irq_o" internal="handler_0.irq" type="interrupt" dir="end" />
+ <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="str_in"
+   internal="module_0.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_in_1"
+   internal="module_1.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface name="system_csr" internal="mm_bridge_0.s0" type="avalon" dir="end" />
+ <module
+   name="Avalon_MM_byteorder_changer_0"
+   kind="Avalon_MM_byteorder_changer"
+   version="1.0"
+   enabled="1">
+  <parameter name="ADDR_WIDTH" value="32" />
+  <parameter name="BURST_WIDTH" value="8" />
+  <parameter name="DATA_WIDTH" value="64" />
+ </module>
+ <module name="HLS_CTL_0" kind="HLS_CTL" version="1.0" enabled="1" />
+ <module name="clk_0" kind="clock_source" version="17.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module name="handler_0" kind="ah_handler" version="1.0" enabled="1">
+  <parameter name="AUTO_AVMM_1_W_ADDRESS_MAP"><![CDATA[<address-map><slave name='Avalon_MM_byteorder_changer_0.slv' start='0x0' end='0x100000000' /></address-map>]]></parameter>
+  <parameter name="AUTO_AVMM_1_W_ADDRESS_WIDTH" value="AddressWidth = 32" />
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_handler_0</parameter>
+ </module>
+ <module
+   name="mm_bridge_0"
+   kind="altera_avalon_mm_bridge"
+   version="17.1"
+   enabled="1">
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="DATA_WIDTH" value="64" />
+  <parameter name="LINEWRAPBURSTS" value="0" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="MAX_PENDING_RESPONSES" value="4" />
+  <parameter name="PIPELINE_COMMAND" value="1" />
+  <parameter name="PIPELINE_RESPONSE" value="1" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="14" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
+  <parameter name="USE_RESPONSE" value="0" />
+ </module>
+ <module name="module_0" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_0</parameter>
+ </module>
+ <module name="module_1" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_1</parameter>
+ </module>
+ <module name="multiplexer_0" kind="multiplexer" version="17.1" enabled="1">
+  <parameter name="bitsPerSymbol" value="64" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="numInputInterfaces" value="2" />
+  <parameter name="outChannelWidth" value="1" />
+  <parameter name="packetScheduling" value="false" />
+  <parameter name="schedulingSize" value="2" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useHighBitsOfChannel" value="false" />
+  <parameter name="usePackets" value="false" />
+ </module>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="handler_0.avmm_1_w"
+   end="Avalon_MM_byteorder_changer_0.slv">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_bridge_0.m0"
+   end="module_0.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_bridge_0.m0"
+   end="module_1.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_bridge_0.m0"
+   end="handler_0.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_bridge_0.m0"
+   end="HLS_CTL_0.slv">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x1000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="multiplexer_0.out"
+   end="handler_0.str_in" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_0.result"
+   end="multiplexer_0.in0" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_1.result"
+   end="multiplexer_0.in1" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="mm_bridge_0.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="multiplexer_0.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_0.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_1.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="handler_0.clock" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="HLS_CTL_0.clock_sink" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="Avalon_MM_byteorder_changer_0.clock_sink" />
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="handler_0.amm_res"
+   end="HLS_CTL_0.conduit_end">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="mm_bridge_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_1.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="multiplexer_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="handler_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="HLS_CTL_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="Avalon_MM_byteorder_changer_0.reset_sink" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

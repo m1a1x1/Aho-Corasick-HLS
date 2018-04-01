@@ -1,8 +1,13 @@
-#include "HLS/hls.h"   
-#include "HLS/stdio.h"
+#ifndef __APP__
+  #include "HLS/hls.h"   
+  #include "HLS/stdio.h"
+  #include "HLS/ac_int.h"
+#else
+  #include "stdio.h"
+#include <iostream>
+#endif
 #include <stdint.h>
 #include <stdlib.h> 
-#include "HLS/ac_int.h"
 #include <string>
 #include <vector>
 
@@ -52,10 +57,18 @@ int InfoAC::SetWord( const std::string & word ){
   int ptr[TILE_CNT] = {0};
   int symbol_num = 0;
   for( char character : word ){
+#ifndef __APP__
      uint8 symbol ( character );
+#else
+     uint8_t symbol = character;
+#endif
 
      for( int i = 0; i < TILE_CNT; i++ ){
-       uint2  part = symbol.slc<2>(i << 1);
+#ifndef __APP__
+         uint2  part = symbol.slc<2>(i << 1);
+#else
+         uint8_t part = ( symbol >> i * 2  ) & 0x3;
+#endif
        int local_ptr = mem[module_busy][i][ptr[i]].ptr[part];
 
        if( local_ptr == 0 ){
@@ -86,13 +99,13 @@ int InfoAC::SetWord( const std::string & word ){
   return 0;
 }
 
-void InfoAC::PrintTitleContent( int module_num, int title_num ){
+void InfoAC::PrintTitleContent( int module_num, int tile_num ){
   for( int i = 0; i < MEM_WIDTH; i++ ){
-    printf("| %4d | %4d | %4d | %4d | %3x |\n", mem[module_num][title_num][i].ptr[0],
-                                           mem[module_num][title_num][i].ptr[1],
-                                           mem[module_num][title_num][i].ptr[2],
-                                           mem[module_num][title_num][i].ptr[3],
-                                           mem[module_num][title_num][i].pmv   );
+    printf("| %4d | %4d | %4d | %4d | %3x |\n", mem[module_num][tile_num][i].ptr[0],
+                                           mem[module_num][tile_num][i].ptr[1],
+                                           mem[module_num][tile_num][i].ptr[2],
+                                           mem[module_num][tile_num][i].ptr[3],
+                                           mem[module_num][tile_num][i].pmv   );
   }
 }
 
@@ -130,9 +143,17 @@ void InfoAC::SearchInString( const std::string & text ){
   }
 }
 
-ac_word InfoAC::GetInfo( const csr_ac & csr ){
-  return mem[csr.rule_module_num][csr.title_num][csr.node_addr];  
-}
+#ifndef __APP__
+  ac_word InfoAC::GetInfo( const csr_ac & csr ){
+    return mem[csr.rule_module_num][csr.tile_num][csr.node_addr];  
+  }
+#else
+  ac_word InfoAC::GetInfo( const uint8_t & module,
+                           const uint8_t & tile_num,
+                           const uint8_t & addr ){
+    return mem[module][tile_num][addr]; 
+  } 
+#endif
  
 std::string InfoAC::WordInfoToWord( const word_info & wi ){
   for (std::map<std::string, word_info>::iterator it=words.begin(); it!=words.end(); it++)
