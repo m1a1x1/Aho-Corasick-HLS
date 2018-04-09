@@ -57,11 +57,11 @@ module top(
 	inout 		          		HPS_SPIM_SS,
 	input 		          		HPS_UART_RX,
 	output		          		HPS_UART_TX,
-	input 		          		HPS_USB_CLKOUT,
-	inout 		     [7:0]		HPS_USB_DATA,
-	input 		          		HPS_USB_DIR,
-	input 		          		HPS_USB_NXT,
-	output		          		HPS_USB_STP,
+//	input 		          		HPS_USB_CLKOUT,
+//	inout 		     [7:0]		HPS_USB_DATA,
+//	input 		          		HPS_USB_DIR,
+//	input 		          		HPS_USB_NXT,
+//	output		          		HPS_USB_STP,
 	
 	//////////// KEY ////////////
 	/* 3.3-V LVTTL */
@@ -124,18 +124,18 @@ soc_system soc(
    .hps_0_hps_io_hps_io_sdio_inst_D2      ( HPS_SD_DATA[2]     ),      //                               .hps_io_sdio_inst_D2
    .hps_0_hps_io_hps_io_sdio_inst_D3      ( HPS_SD_DATA[3]     ),      //                               .hps_io_sdio_inst_D3
    //HPS USB 		  
-   .hps_0_hps_io_hps_io_usb1_inst_D0      ( HPS_USB_DATA[0]    ),      //                               .hps_io_usb1_inst_D0
-   .hps_0_hps_io_hps_io_usb1_inst_D1      ( HPS_USB_DATA[1]    ),      //                               .hps_io_usb1_inst_D1
-   .hps_0_hps_io_hps_io_usb1_inst_D2      ( HPS_USB_DATA[2]    ),      //                               .hps_io_usb1_inst_D2
-   .hps_0_hps_io_hps_io_usb1_inst_D3      ( HPS_USB_DATA[3]    ),      //                               .hps_io_usb1_inst_D3
-   .hps_0_hps_io_hps_io_usb1_inst_D4      ( HPS_USB_DATA[4]    ),      //                               .hps_io_usb1_inst_D4
-   .hps_0_hps_io_hps_io_usb1_inst_D5      ( HPS_USB_DATA[5]    ),      //                               .hps_io_usb1_inst_D5
-   .hps_0_hps_io_hps_io_usb1_inst_D6      ( HPS_USB_DATA[6]    ),      //                               .hps_io_usb1_inst_D6
-   .hps_0_hps_io_hps_io_usb1_inst_D7      ( HPS_USB_DATA[7]    ),      //                               .hps_io_usb1_inst_D7
-   .hps_0_hps_io_hps_io_usb1_inst_CLK     ( HPS_USB_CLKOUT    ),       //                               .hps_io_usb1_inst_CLK
-   .hps_0_hps_io_hps_io_usb1_inst_STP     ( HPS_USB_STP    ),          //                               .hps_io_usb1_inst_STP
-   .hps_0_hps_io_hps_io_usb1_inst_DIR     ( HPS_USB_DIR    ),          //                               .hps_io_usb1_inst_DIR
-   .hps_0_hps_io_hps_io_usb1_inst_NXT     ( HPS_USB_NXT    ),          //                               .hps_io_usb1_inst_NXT
+//   .hps_0_hps_io_hps_io_usb1_inst_D0      ( HPS_USB_DATA[0]    ),      //                               .hps_io_usb1_inst_D0
+//   .hps_0_hps_io_hps_io_usb1_inst_D1      ( HPS_USB_DATA[1]    ),      //                               .hps_io_usb1_inst_D1
+//   .hps_0_hps_io_hps_io_usb1_inst_D2      ( HPS_USB_DATA[2]    ),      //                               .hps_io_usb1_inst_D2
+//   .hps_0_hps_io_hps_io_usb1_inst_D3      ( HPS_USB_DATA[3]    ),      //                               .hps_io_usb1_inst_D3
+//   .hps_0_hps_io_hps_io_usb1_inst_D4      ( HPS_USB_DATA[4]    ),      //                               .hps_io_usb1_inst_D4
+//   .hps_0_hps_io_hps_io_usb1_inst_D5      ( HPS_USB_DATA[5]    ),      //                               .hps_io_usb1_inst_D5
+//   .hps_0_hps_io_hps_io_usb1_inst_D6      ( HPS_USB_DATA[6]    ),      //                               .hps_io_usb1_inst_D6
+//   .hps_0_hps_io_hps_io_usb1_inst_D7      ( HPS_USB_DATA[7]    ),      //                               .hps_io_usb1_inst_D7
+//   .hps_0_hps_io_hps_io_usb1_inst_CLK     ( HPS_USB_CLKOUT    ),       //                               .hps_io_usb1_inst_CLK
+//   .hps_0_hps_io_hps_io_usb1_inst_STP     ( HPS_USB_STP    ),          //                               .hps_io_usb1_inst_STP
+//   .hps_0_hps_io_hps_io_usb1_inst_DIR     ( HPS_USB_DIR    ),          //                               .hps_io_usb1_inst_DIR
+//   .hps_0_hps_io_hps_io_usb1_inst_NXT     ( HPS_USB_NXT    ),          //                               .hps_io_usb1_inst_NXT
  	//HPS SPI 		  
    .hps_0_hps_io_hps_io_spim1_inst_CLK    ( HPS_SPIM_CLK  ),           //                               .hps_io_spim1_inst_CLK
    .hps_0_hps_io_hps_io_spim1_inst_MOSI   ( HPS_SPIM_MOSI ),           //                               .hps_io_spim1_inst_MOSI
@@ -159,11 +159,11 @@ soc_system soc(
    .hps_0_hps_io_hps_io_gpio_inst_GPIO61  ( HPS_GSENSOR_INT ),  //                               .hps_io_gpio_inst_GPIO61
  	//FPGA Partion
   .str_out_data          ( str_out_data          ),
-  .str_out_ready         ( !( &ready )           ),
+  .str_out_ready         (  &ready               ),
   .str_out_valid         ( str_out_valid         ),
   .str_out_startofpacket ( str_out_startofpacket ),
   .str_out_endofpacket   ( str_out_endofpacket   ),
-/*
+
   .str_in0_data          ( str_out_data          ),
   .str_in0_ready         ( ready[0]              ),
   .str_in0_valid         ( str_out_valid         ),
@@ -174,9 +174,9 @@ soc_system soc(
   .str_in1_ready         ( ready[1]              ),
   .str_in1_valid         ( str_out_valid         ),
   .str_in1_startofpacket ( str_out_startofpacket ),
-  .str_in1_endofpacket   ( str_out_endofpacket   )
-*/
+  .str_in1_endofpacket   ( str_out_endofpacket   ),
 
+/*
   .test_0_call0_valid ( str_out_valid || led_tmp[7]  ),
   .test_0_call0_stall ( ready[0]              ),
   .test_0_call1_valid ( str_out_valid  || led_tmp[7]       ),
@@ -190,6 +190,7 @@ soc_system soc(
   .test_0_symbol0_data( str_out_data          ),
   .test_0_symbol1_data( str_out_data          ),
 
+*/
   .led_export         ( led_tmp[7:0]        )
 );
 

@@ -42,18 +42,11 @@ uint32_t ah_handler( ast_res & str_in,
 
 
 #ifdef __ALWAYS_RUN__
-//hls_always_run_component
+hls_always_run_component
 #endif
 component
-void ah_module( //ast_snk &str_in,
-                uint8   symbol,
-                uint1   sop, 
+void ah_module( ast_snk &str_in,
                 ast_src &result,
-                /*
-                hls_avalon_slave_register_argument uint2   tile_num,
-                hls_avalon_slave_register_argument uint8   node_addr,
-                hls_avalon_slave_register_argument uint8   conf
-                */
                 hls_avalon_slave_register_argument ac_word node,
                 hls_avalon_slave_register_argument uint8  id,
                 hls_avalon_slave_register_argument csr_ac csr
@@ -66,13 +59,15 @@ void ah_module( //ast_snk &str_in,
     return;
   }
 
-  //bool success = false;
- // bool sop = false;
- // bool eop = false;
-  //uint8 symbol = str_in.tryRead( success ,sop, eop );
+  bool success = false;
+  bool sop = false;
+  bool eop = false;
+  uint8 symbol = str_in.tryRead( success ,sop, eop );
   pmv_t pmv[TILE_CNT];
 
-  //while( success ){
+#ifndef __ALWAYS_RUN__
+    while( success ){
+#endif
     #pragma ivdep array(mem)
     #pragma unroll TILE_CNT
     #pragma II 1
@@ -91,8 +86,10 @@ void ah_module( //ast_snk &str_in,
     if( fi.pmv != 0 )
       result.write( fi ); 
 
-   // symbol = str_in.tryRead( success ,sop, eop );
-   // }
+#ifndef __ALWAYS_RUN__
+    symbol = str_in.tryRead( success ,sop, eop );
+  }
+#endif
 }
 #ifndef FPGA_ONLY
 #ifdef  TB_AH
@@ -137,12 +134,9 @@ int main( ){
         csr.node_addr = k;
         //csr.node = info_ac.GetInfo( csr );
         node = info_ac.GetInfo( csr );
-        //ihc_hls_enqueue_noret( aho_corasik, snk, src, csr );
-        //ah_module( snk, src, j, k, csr.node, i, 1 );
-        //csr.conf = false;
-        //ah_module( snk, src, j, k, csr.node, i, 0 );
-        //ah_module( snk, src, node, 0,csr );
-        ah_module( 0, 0, src, node, 0,csr );
+        ah_module( snk, src, node, i, csr );
+        csr.conf = false;
+        ah_module( snk, src, node, i, csr );
       }
     }
   }
@@ -152,24 +146,14 @@ int main( ){
   node.ptr[2] = 0; 
   node.ptr[3] = 0;
   node.pmv    = 0;
- 
-
   
   cout << "!!! Start !!!" << endl;
   for (int i = 0; i < buffer.length(); i++){
-  //  snk.write( buffer[i], i == 0, ( i == buffer.length() - 1)  );
-    ihc_hls_enqueue_noret( ah_module, buffer[i], i == 0, src, node, 0, csr );
+    snk.write( buffer[i], i == 0, ( i == buffer.length() - 1)  );
   }
-  /*
-  for (int i = 0; i < buffer.length(); i++){
-    ihc_hls_enqueue_noret( aho_corasik, snk, src, csr );
-  }*/
-  //ihc_hls_enqueue_noret( aho_corasik, snk, src, csr  );
 
   cout << "!!! Run !!!" << endl;
-  //ah_module( snk, src, node, 0,csr );
-  //ah_module( snk, src, 0, 0, csr.node, 0, 0 );
-  ihc_hls_component_run_all( ah_module );
+  ah_module( snk, src, node, 0, csr  );
 
 
   bool success = false;

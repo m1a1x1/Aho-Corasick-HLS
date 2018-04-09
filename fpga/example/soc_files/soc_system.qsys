@@ -123,8 +123,16 @@
    type="conduit"
    dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
- <interface name="str_in0" internal="test_0.str_in" />
- <interface name="str_in1" internal="test_0.str_in_1" />
+ <interface
+   name="str_in0"
+   internal="test_0.str_in0"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_in1"
+   internal="test_0.str_in1"
+   type="avalon_streaming"
+   dir="end" />
  <interface
    name="str_out"
    internal="pattern_0.src"
@@ -140,22 +148,14 @@
    internal="reset_bridge_0.out_reset"
    type="reset"
    dir="start" />
- <interface name="test_0_call0" internal="test_0.call0" type="conduit" dir="end" />
- <interface name="test_0_call1" internal="test_0.call1" type="conduit" dir="end" />
- <interface name="test_0_ret0" internal="test_0.ret0" type="conduit" dir="end" />
- <interface name="test_0_ret1" internal="test_0.ret1" type="conduit" dir="end" />
- <interface name="test_0_sop0" internal="test_0.sop0" type="conduit" dir="end" />
- <interface name="test_0_sop1" internal="test_0.sop1" type="conduit" dir="end" />
- <interface
-   name="test_0_symbol0"
-   internal="test_0.symbol0"
-   type="conduit"
-   dir="end" />
- <interface
-   name="test_0_symbol1"
-   internal="test_0.symbol1"
-   type="conduit"
-   dir="end" />
+ <interface name="test_0_call0" internal="test_0.call0" />
+ <interface name="test_0_call1" internal="test_0.call1" />
+ <interface name="test_0_ret0" internal="test_0.ret0" />
+ <interface name="test_0_ret1" internal="test_0.ret1" />
+ <interface name="test_0_sop0" internal="test_0.sop0" />
+ <interface name="test_0_sop1" internal="test_0.sop1" />
+ <interface name="test_0_symbol0" internal="test_0.symbol0" />
+ <interface name="test_0_symbol1" internal="test_0.symbol1" />
  <module
    name="clock_bridge_0"
    kind="altera_clock_bridge"
@@ -613,8 +613,8 @@
   <parameter name="UART1_PinMuxing" value="Unused" />
   <parameter name="USB0_Mode" value="N/A" />
   <parameter name="USB0_PinMuxing" value="Unused" />
-  <parameter name="USB1_Mode" value="SDR" />
-  <parameter name="USB1_PinMuxing" value="HPS I/O Set 0" />
+  <parameter name="USB1_Mode" value="N/A" />
+  <parameter name="USB1_PinMuxing" value="Unused" />
   <parameter name="USER_DEBUG_LEVEL" value="1" />
   <parameter name="USE_AXI_ADAPTOR" value="false" />
   <parameter name="USE_FAKE_PHY" value="false" />

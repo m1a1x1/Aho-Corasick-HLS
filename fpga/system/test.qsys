@@ -131,19 +131,27 @@
    internal="Avalon_MM_byteorder_changer_0.mst"
    type="avalon"
    dir="start" />
- <interface name="call0" internal="module_0.call" type="conduit" dir="end" />
- <interface name="call1" internal="module_1.call" type="conduit" dir="end" />
+ <interface name="call0" internal="module_0.call" />
+ <interface name="call1" internal="module_1.call" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="irq_o" internal="handler_0.irq" type="interrupt" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <interface name="ret0" internal="module_0.return" type="conduit" dir="end" />
- <interface name="ret1" internal="module_1.return" type="conduit" dir="end" />
- <interface name="sop0" internal="module_0.sop" type="conduit" dir="end" />
- <interface name="sop1" internal="module_1.sop" type="conduit" dir="end" />
- <interface name="str_in" internal="module_0.str_in" />
- <interface name="str_in_1" internal="module_1.str_in" />
- <interface name="symbol0" internal="module_0.symbol" type="conduit" dir="end" />
- <interface name="symbol1" internal="module_1.symbol" type="conduit" dir="end" />
+ <interface name="ret0" internal="module_0.return" />
+ <interface name="ret1" internal="module_1.return" />
+ <interface name="sop0" internal="module_0.sop" />
+ <interface name="sop1" internal="module_1.sop" />
+ <interface
+   name="str_in0"
+   internal="module_0.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_in1"
+   internal="module_1.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface name="symbol0" internal="module_0.symbol" />
+ <interface name="symbol1" internal="module_1.symbol" />
  <interface name="system_csr" internal="mm_bridge_0.s0" type="avalon" dir="end" />
  <module
    name="Avalon_MM_byteorder_changer_0"
