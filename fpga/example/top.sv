@@ -77,8 +77,9 @@ module top(
 );
 
 
-
+logic [7:0] led_tmp;
 logic [1:0] ready;
+logic [7:0] str_out_data;
 
 soc_system soc(
  	//Clock&Reset
@@ -158,11 +159,11 @@ soc_system soc(
    .hps_0_hps_io_hps_io_gpio_inst_GPIO61  ( HPS_GSENSOR_INT ),  //                               .hps_io_gpio_inst_GPIO61
  	//FPGA Partion
   .str_out_data          ( str_out_data          ),
-  .str_out_ready         ( &ready                ),
+  .str_out_ready         ( !( &ready )           ),
   .str_out_valid         ( str_out_valid         ),
   .str_out_startofpacket ( str_out_startofpacket ),
   .str_out_endofpacket   ( str_out_endofpacket   ),
-
+/*
   .str_in0_data          ( str_out_data          ),
   .str_in0_ready         ( ready[0]              ),
   .str_in0_valid         ( str_out_valid         ),
@@ -174,6 +175,22 @@ soc_system soc(
   .str_in1_valid         ( str_out_valid         ),
   .str_in1_startofpacket ( str_out_startofpacket ),
   .str_in1_endofpacket   ( str_out_endofpacket   )
+*/
+
+  .test_0_call0_valid ( str_out_valid || led_tmp[7]  ),
+  .test_0_call0_stall ( ready[0]              ),
+  .test_0_call1_valid ( str_out_valid  || led_tmp[7]       ),
+  .test_0_call1_stall ( ready[1]              ),
+  .test_0_ret0_valid  (                       ),
+  .test_0_ret0_stall  (                       ),
+  .test_0_ret1_valid  (                       ),
+  .test_0_ret1_stall  (                            ),
+  .test_0_sop0_data   ( str_out_startofpacket      ),
+  .test_0_sop1_data   ( str_out_startofpacket      ),
+  .test_0_symbol0_data( str_out_data          ),
+  .test_0_symbol1_data( str_out_data          ),
+
+  .led_export         ( led_tmp[7:0]        )
 );
 
 localparam FREQ = 50000000;
@@ -188,6 +205,6 @@ always_ff @( posedge fpga_clk0_50 )
       cnt <= cnt + 1'b1;
   end 
 
-assign led[7] = ( cnt < ( FREQ/2 ) ); 
+assign led = {( cnt < ( FREQ/2 ) ), led_tmp[6:0]}; 
 
 endmodule

@@ -13,7 +13,6 @@
 #include "ac.h" 
 
 #define GET_MASK(y) ( ( 1 << y ) - 1 )
-#define MODULE_CNT 2
 using namespace std;
 
 int ReadingSearchStrings( const string & fn, InfoAC & info_ac ){
@@ -35,7 +34,7 @@ void ConfigAcFpgaModule( int f_dev, InfoAC & info_ac ){
 
   ac_word word;  
   ac_conf acc;
-  for( int i = 0; i < MODULE_CNT; i++ ){
+  for( int i = 0; i < 1; i++ ){
     for( int j = 0; j < TILE_CNT; j++ ){
       for( int k = 0; k < MEM_WIDTH; k++ ){
         word = info_ac.GetInfo( i, j, k );
@@ -50,6 +49,10 @@ void ConfigAcFpgaModule( int f_dev, InfoAC & info_ac ){
                   ( word.ptr[1] << 8 ) | 
                   ( word.ptr[0] );
         ioctl( f_dev, IOCTL_SET_CONF, &acc );
+        usleep( 1000 );
+        if( ( k == 0) & ( j == 0) ){
+          getchar();
+        }
       }
     }
   }      
@@ -77,6 +80,7 @@ int main(){
     cout << "No such device!" << endl;
     return -1;
   }
+
 
   if( ReadingSearchStrings( "words", info_ac ) < 0 ){
     cout << "Not whith search words!" << endl;

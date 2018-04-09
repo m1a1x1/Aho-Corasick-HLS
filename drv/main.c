@@ -20,20 +20,20 @@
 #include "tst.h"
 #include "common_ac.h"
 
-void fpga_write(int reg, u32 val, void* fpga_regs){
+inline void fpga_write(int reg, u32 val, void* fpga_regs){
   iowrite32(val, fpga_regs + 4*reg);
 }
-uint32_t fpga_read(int reg, void* fpga_regs ){
+inline uint32_t fpga_read(int reg, void* fpga_regs ){
   return ioread32( fpga_regs + 4*reg );
 }
 
-void conf_ah_handler( struct tst_data *td){
+void conf_ac_handler( struct tst_data *td){
   int rd_ptr = atomic_read( &td->read_ptr );
-  fpga_write( IRQ_ADDR, IRQ_OFF, td->ah_handler );
-  fpga_write( CTL_DMA_ADDR, td->dma_buffers[rd_ptr].phys_addr, td->ah_ctl );
-  fpga_write( CNT_RES_ADDR, 0, td->ah_handler );
-  fpga_write( IRQ_ADDR, IRQ_ON, td->ah_handler );
-  fpga_write( START_ADDR, START, td->ah_handler ); 
+  fpga_write( CTL_DMA_ADDR, td->dma_buffers[rd_ptr].phys_addr, td->hls_ctl );
+  fpga_write( IRQ_ADDR, IRQ_OFF, td->ac_handler );
+  fpga_write( CNT_RES_ADDR, 0, td->ac_handler );
+  fpga_write( IRQ_ADDR, IRQ_ON, td->ac_handler );
+  fpga_write( START_ADDR, START, td->ac_handler ); 
 }
 
 static int dev_open(struct inode *inodep, struct file *filep){
@@ -45,8 +45,9 @@ static int dev_open(struct inode *inodep, struct file *filep){
   }
  
   printk( KERN_INFO "Dev open\n");
+  fpga_write( 0x0, 127, td->led ); 
   td->numberOpens++;
-  conf_ah_handler( td );
+  conf_ac_handler( td );
   return 0;
 }
    
@@ -75,22 +76,33 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
   
 
 
-int dev_ioctl(struct inode *inodep, struct file *filep, unsigned int num, unsigned long param){
-  struct tst_data *td = container_of(inodep->i_cdev, struct tst_data, c_dev);
-  uint8_t * ah_regs_ptr;
-  ac_conf * user_acc = ( ac_conf * ) param;
+int dev_ioctl( struct file *filep, unsigned int cmd, unsigned long arg){
+  struct tst_data *td = filep->private_data;
   ac_conf acc;
-  
-  copy_from_user( &acc, user_acc, sizeof( ac_conf ) );
-  ah_regs_ptr = ( uint8_t *) td->ah_regs + AC_REGS_LEN * acc.id;
+  ac_conf * user_acc;
+  void * ac_regs_ptr;
+  uint32_t conf = 0; 
 
-  fpga_write( TILE_ADDR, acc.tile_addr, ah_regs_ptr ); 
-  fpga_write( PMV_ADDR, acc.pmv, ah_regs_ptr ); 
-  fpga_write( PTR_ADDR, acc.ptr, ah_regs_ptr ); 
-  fpga_write( CONF_ADDR, 1, ah_regs_ptr ); 
-  fpga_write( ID_ADDR, acc.id, ah_regs_ptr ); 
-  fpga_write( MEM_ADDR, acc.addr, ah_regs_ptr ); 
-  fpga_write( CONF_ADDR, 0, ah_regs_ptr );
+	switch( cmd ){
+	  case IOCTL_SET_CONF:
+      user_acc = ( ac_conf * ) arg;
+
+      if( copy_from_user( &acc, user_acc, sizeof( ac_conf ) ) < 0 ){
+        printk( KERN_ERR "Can't get info.\n" );
+        return -EFAULT;
+      }
+      conf =  WRITE_CONF | ( acc.addr << 16 ) | ( acc.tile_addr << 8 );
+      ac_regs_ptr  =( AC_REGS_LEN * acc.id ) + td->ac_regs;
+      fpga_write( PMV_ADDR,  acc.pmv,       ac_regs_ptr ); 
+      fpga_write( PTR_ADDR,  acc.ptr,       ac_regs_ptr ); 
+      fpga_write( ID_ADDR,   acc.id,        ac_regs_ptr ); 
+      fpga_write( CONF_ADDR, conf,          ac_regs_ptr ); 
+      fpga_write( 0x0, 255, td->led ); 
+      fpga_write( 0x0, 63, td->led ); 
+      fpga_write( CONF_ADDR, 0,             ac_regs_ptr ); 
+      break;
+  }
+ 
   return 0; 
 }
 
@@ -138,8 +150,8 @@ static irqreturn_t tst_isr(int irq, void *dev_id){
     atomic_inc( &td->irq_cnt ); 
   
   atomic_set( &td->search_cnt,
-              fpga_read( CNT_RES_ADDR, td->ah_handler) ); 
-  conf_ah_handler( td );
+              fpga_read( CNT_RES_ADDR, td->ac_handler) ); 
+  conf_ac_handler( td );
   
   
   wake_up_interruptible(&td->wq_irq);
@@ -162,58 +174,75 @@ static struct file_operations fops =
 };
 
 static const struct of_device_id tst_of_match[] = {
-	{ .compatible = "zynq,tst", },
+	{ .compatible = "ac", },
 	{},
 };
 
 MODULE_DEVICE_TABLE(of, tst_of_match);
 
 static int parse_dt( struct platform_device *pdev ){
-   int ret = 0;
-   struct resource *reg_res;
-   struct tst_data *td = platform_get_drvdata( pdev );
+  int ret = 0;
+  struct resource *reg_res;
+  struct tst_data *td = platform_get_drvdata( pdev );
 
-   reg_res = platform_get_resource_byname( pdev, IORESOURCE_MEM, "ah_handler" );
-   if( !reg_res ){
-     return -ENODEV;
-   }
+  reg_res = platform_get_resource_byname( pdev, IORESOURCE_MEM, "ac_csr" );
+  if( !reg_res ){
+    dev_err( &pdev->dev, "Parameter ac_csr not exist!" );
+    return -ENODEV;
+  }
 
-   td->ah_handler = devm_ioremap_resource(&pdev->dev, reg_res);
-   if( IS_ERR( td->ah_handler ) ){
-     dev_err( &pdev->dev, "devm ioremap resource error!" );
-     return -ECANCELED;
-   }
+  td->ac_regs = devm_ioremap_resource(&pdev->dev, reg_res);
+  if( IS_ERR( td->ac_regs ) ){
+    dev_err( &pdev->dev, "devm ioremap resource error!" );
+    return -ECANCELED;
+  }
 
-   reg_res = platform_get_resource_byname( pdev, IORESOURCE_MEM, "ah_csr" );
-   if( !reg_res ){
-     return -ENODEV;
-   }
+  reg_res = platform_get_resource_byname( pdev, IORESOURCE_MEM, "hls_ctl" );
+  if( !reg_res ){
+    dev_err( &pdev->dev, "Parameter hls_ctl not exist!" );
+    return -ENODEV;
+  }
 
-   td->ah_regs = devm_ioremap_resource(&pdev->dev, reg_res);
-   if( IS_ERR( td->ah_regs ) ){
-     dev_err( &pdev->dev, "devm ioremap resource error!" );
-     return -ECANCELED;
-   }
+  td->hls_ctl = devm_ioremap_resource(&pdev->dev, reg_res );
+  if( IS_ERR( td->hls_ctl ) ){
+    dev_err( &pdev->dev, "devm ioremap resource error!" );
+    return -ECANCELED;
+  }
 
-   td->irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
-   if( !td->irq ){
-     dev_err( &pdev->dev, "Failed to parse and map IRQ");
-     return -ECANCELED;
-   }
+  reg_res = platform_get_resource_byname( pdev, IORESOURCE_MEM, "ac_handler" );
+  if( !reg_res ){
+    dev_err( &pdev->dev, "Parameter ac_handler not exist!" );
+    return -ENODEV;
+  }
 
-   ret = devm_request_irq(&pdev->dev, td->irq, tst_isr,
-	                        IRQF_SHARED, DEVICE_NAME, td );
-   if( ret ){
-     dev_err( &pdev->dev, "Failed to request IRQ for TST");
-     return -ECANCELED;
-   }
+  td->ac_handler = devm_ioremap_resource(&pdev->dev, reg_res);
+  if( IS_ERR( td->ac_handler ) ){
+    dev_err( &pdev->dev, "devm ioremap resource error!" );
+    return -ECANCELED;
+  }
 
-   if( of_property_read_u32(pdev->dev.of_node, "ah-module-cnt",
-                            &td->ah_module_cnt ) ) {
-     dev_err(&pdev->dev, "Cannot obtain ah-module-cnt\n");
-     return -ENXIO;
-   }
-return 0;
+
+  td->irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
+  if( !td->irq ){
+    dev_err( &pdev->dev, "Failed to parse and map IRQ");
+    return -ECANCELED;
+  }
+
+  ret = devm_request_irq(&pdev->dev, td->irq, tst_isr,
+	                       IRQF_SHARED, DEVICE_NAME, td );
+  if( ret ){
+    dev_err( &pdev->dev, "Failed to request IRQ for TST");
+    return -ECANCELED;
+  }
+
+  td->led = ioremap( 0xC0005000, sizeof( uint8_t ) );
+  if( IS_ERR( td->led ) ){
+    dev_err( &pdev->dev, "ioremap LED error!" );
+    return -ECANCELED;
+  }
+
+
+  return 0;
 
 }
 
@@ -221,6 +250,7 @@ static int tst_probe(struct platform_device *pdev){
    int retval = 0;
    struct tst_data *td = kzalloc( sizeof( struct tst_data ), GFP_KERNEL );
 
+   dev_notice( &pdev->dev, "Start probe." );
    td->DeviceName  = kmalloc( sizeof( DEVICE_NAME ), GFP_KERNEL );
    td-> DeviceClass = kmalloc( sizeof( CLASS_NAME ), GFP_KERNEL );
 
@@ -266,11 +296,15 @@ static int tst_probe(struct platform_device *pdev){
      goto unreg_dev;
    }
 
-   if( parse_dt( pdev ) < 0 ){
+   retval = parse_dt( pdev );
+   if( retval < 0 ){
      dev_err( &pdev->dev, "Device tree parse error");
      goto dma_free;
    }
-    
+ 
+ 
+   dev_notice( &pdev->dev, "Driver probe is end" ); 
+   
    return 0;
 
 dma_free:
@@ -327,11 +361,11 @@ static int __init tst_init(void){
    int retval = platform_driver_probe( &tst_driver, tst_probe );
 
    if( retval < 0 ) {
-     printk(KERN_ERR "Failed to probe TST_DEV platform driver\n");
+     printk(KERN_ERR "Failed to probe %s platform driver\n", DEVICE_NAME );
      return retval; 
    }
 
-   printk(KERN_INFO "TST_DEV: device created correctly\n");
+   printk(KERN_INFO "%s: device created correctly\n", DEVICE_NAME);
    return 0;
 
 }

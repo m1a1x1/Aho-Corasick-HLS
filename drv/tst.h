@@ -1,27 +1,30 @@
 #define  DEVICE_NAME "ac_dev"   
 #define  CLASS_NAME  "ac_class"
 
-#define SIZE_DESC  0x40 
-#define DESC_ADDR 0x40000000
-
-#define AC_REGS_LEN 0x80
+#define AC_REGS_LEN 0x40
 
 // Ac Module
-#define TILE_ADDR 0x8
-#define ID_ADDR   0xe
-#define CONF_ADDR 0x10
+//#define TILE_ADDR      0x0
+//#define NODE_ADDR      0x2
+//#define PTR_ADDR       0x4
+//#define PMV_ADDR       0x5
+//#define ID_ADDR        0x6
+//#define CONF_ADDR      0x8
+#define PTR_ADDR       0x0
+#define PMV_ADDR       0x1
+#define ID_ADDR        0x2
+#define CONF_ADDR      0x4
 
 // AC Handler
 #define START_ADDR   0x2
 #define IRQ_ADDR     0x4
 #define RETURN_ADDR  0x8
-#define PMV_ADDR     0xd
-#define PTR_ADDR     0xc
 #define CNT_RES_ADDR 0xa 
 
 // HLS CTL
 #define CTL_DMA_ADDR 0x0
 
+#define WRITE_CONF ( 1 << 24 )
 #define START   1
 #define IRQ_ON  1
 #define IRQ_OFF 0
@@ -46,9 +49,10 @@ struct tst_data{
   struct device *   charDevice;
   char *            DeviceName;
   char *            DeviceClass;
-  void *            ah_ctl;
-  void *            ah_regs;
-  void *            ah_handler;
+  void *            hls_ctl;
+  void *            ac_regs;
+  void *            ac_handler;
+  void *            led;
   phys_addr_t       desc_phys;
   struct cdev       c_dev;
   int               irq;
@@ -56,13 +60,5 @@ struct tst_data{
   atomic_t          read_ptr;
   atomic_t          search_cnt;
   wait_queue_head_t wq_irq;
-  uint32_t          ah_module_cnt;    
   dma_buffer        dma_buffers[BUFFER_CNT];
-};
-
-
-
-
-struct ac_conf{
-  uint32_t id;
 };

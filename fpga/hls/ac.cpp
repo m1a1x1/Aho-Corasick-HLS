@@ -7,7 +7,7 @@
 #include "HLS/ac_int.h"
 
 #include "ac.h"
-
+#define TB_AH
 #define MEM_ATTR  hls_memory hls_singlepump\
                 //  hls_bankwidth(8) hls_numbanks(RULE_MODULE_CNT*TILE_CNT/2)
 using namespace std;
@@ -41,31 +41,38 @@ uint32_t ah_handler( ast_res & str_in,
 }  
 
 
-#ifdef FPGA_ONLY
-hls_always_run_component
+#ifdef __ALWAYS_RUN__
+//hls_always_run_component
 #endif
-hls_avalon_slave_component 
 component
-void ah_module( ast_snk &str_in, ast_src &result,
+void ah_module( //ast_snk &str_in,
+                uint8   symbol,
+                uint1   sop, 
+                ast_src &result,
+                /*
                 hls_avalon_slave_register_argument uint2   tile_num,
                 hls_avalon_slave_register_argument uint8   node_addr,
+                hls_avalon_slave_register_argument uint8   conf
+                */
                 hls_avalon_slave_register_argument ac_word node,
-                hls_avalon_slave_register_argument uint8   id,
-                hls_avalon_slave_register_argument bool    conf ){
+                hls_avalon_slave_register_argument uint8  id,
+                hls_avalon_slave_register_argument csr_ac csr
+                 ){
 
   MEM_ATTR static ac_word mem [TILE_CNT][MEM_WIDTH] __attribute__((bank_bits(9,8),bankwidth(8)));
   hls_register static ptr_t next_state[TILE_CNT];  
-  if( conf ){
-    mem[tile_num][node_addr] = node;
+  if( csr.conf ){
+    mem[csr.tile_num][csr.node_addr] = node;
+    return;
   }
 
-  bool success = false;
-  bool sop = false;
-  bool eop = false;
-  uint8 symbol = str_in.tryRead( success ,sop, eop );
-  pmv_t pmv[TILE_CNT] = {-1};
+  //bool success = false;
+ // bool sop = false;
+ // bool eop = false;
+  //uint8 symbol = str_in.tryRead( success ,sop, eop );
+  pmv_t pmv[TILE_CNT];
 
-  while( success ){
+  //while( success ){
     #pragma ivdep array(mem)
     #pragma unroll TILE_CNT
     #pragma II 1
@@ -84,8 +91,8 @@ void ah_module( ast_snk &str_in, ast_src &result,
     if( fi.pmv != 0 )
       result.write( fi ); 
 
-    symbol = str_in.tryRead( success ,sop, eop );
-    }
+   // symbol = str_in.tryRead( success ,sop, eop );
+   // }
 }
 #ifndef FPGA_ONLY
 #ifdef  TB_AH
@@ -120,6 +127,7 @@ int main( ){
   csr_ac csr;
   ast_snk snk;
   ast_src src;
+  ac_word node; 
   for( int i = 0; i < 1; i++ ){
     for( int j = 0; j < TILE_CNT; j++ ){
       for( int k = 0; k < MEM_WIDTH; k++ ){
@@ -127,17 +135,30 @@ int main( ){
         csr.rule_module_num = i;
         csr.tile_num = j;
         csr.node_addr = k;
-        csr.node = info_ac.GetInfo( csr );
+        //csr.node = info_ac.GetInfo( csr );
+        node = info_ac.GetInfo( csr );
         //ihc_hls_enqueue_noret( aho_corasik, snk, src, csr );
-        ah_module( snk, src, csr );
+        //ah_module( snk, src, j, k, csr.node, i, 1 );
+        //csr.conf = false;
+        //ah_module( snk, src, j, k, csr.node, i, 0 );
+        //ah_module( snk, src, node, 0,csr );
+        ah_module( 0, 0, src, node, 0,csr );
       }
     }
   }
   csr.conf = false;
+  node.ptr[0] = 0; 
+  node.ptr[1] = 0; 
+  node.ptr[2] = 0; 
+  node.ptr[3] = 0;
+  node.pmv    = 0;
+ 
+
   
   cout << "!!! Start !!!" << endl;
   for (int i = 0; i < buffer.length(); i++){
-    snk.write( buffer[i], i == 0, ( i == buffer.length() - 1)  );
+  //  snk.write( buffer[i], i == 0, ( i == buffer.length() - 1)  );
+    ihc_hls_enqueue_noret( ah_module, buffer[i], i == 0, src, node, 0, csr );
   }
   /*
   for (int i = 0; i < buffer.length(); i++){
@@ -146,8 +167,9 @@ int main( ){
   //ihc_hls_enqueue_noret( aho_corasik, snk, src, csr  );
 
   cout << "!!! Run !!!" << endl;
-  ah_module( snk, src, csr );
-  //ihc_hls_component_run_all( aho_corasik );
+  //ah_module( snk, src, node, 0,csr );
+  //ah_module( snk, src, 0, 0, csr.node, 0, 0 );
+  ihc_hls_component_run_all( ah_module );
 
 
   bool success = false;

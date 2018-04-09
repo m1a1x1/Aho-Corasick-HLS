@@ -16,7 +16,7 @@
     (((i) & 0x01ll) ? '1' : '0')
 
 #define PAGE_SIZE       4096
-#define RULE_MODULE_CNT 32 
+#define RULE_MODULE_CNT 2 
 #define TILE_CNT        4
 #define MEM_WIDTH       256
 
@@ -48,7 +48,6 @@ typedef struct{
     uint8   rule_module_num;
     uint2   tile_num;
     uint8   node_addr;
-    ac_word node;
     bool conf;
   } csr_ac;
 

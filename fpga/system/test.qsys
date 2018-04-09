@@ -93,7 +93,7 @@
    {
       datum baseAddress
       {
-         value = "128";
+         value = "64";
          type = "String";
       }
    }
@@ -108,9 +108,9 @@
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
- <parameter name="device" value="5CEBA2F17A7" />
+ <parameter name="device" value="5CSEMA4U23C6" />
  <parameter name="deviceFamily" value="Cyclone V" />
- <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="deviceSpeedGrade" value="6" />
  <parameter name="fabricMode" value="QSYS" />
  <parameter name="generateLegacySim" value="false" />
  <parameter name="generationId" value="0" />
@@ -131,19 +131,19 @@
    internal="Avalon_MM_byteorder_changer_0.mst"
    type="avalon"
    dir="start" />
+ <interface name="call0" internal="module_0.call" type="conduit" dir="end" />
+ <interface name="call1" internal="module_1.call" type="conduit" dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="irq_o" internal="handler_0.irq" type="interrupt" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <interface
-   name="str_in"
-   internal="module_0.str_in"
-   type="avalon_streaming"
-   dir="end" />
- <interface
-   name="str_in_1"
-   internal="module_1.str_in"
-   type="avalon_streaming"
-   dir="end" />
+ <interface name="ret0" internal="module_0.return" type="conduit" dir="end" />
+ <interface name="ret1" internal="module_1.return" type="conduit" dir="end" />
+ <interface name="sop0" internal="module_0.sop" type="conduit" dir="end" />
+ <interface name="sop1" internal="module_1.sop" type="conduit" dir="end" />
+ <interface name="str_in" internal="module_0.str_in" />
+ <interface name="str_in_1" internal="module_1.str_in" />
+ <interface name="symbol0" internal="module_0.symbol" type="conduit" dir="end" />
+ <interface name="symbol1" internal="module_1.symbol" type="conduit" dir="end" />
  <interface name="system_csr" internal="mm_bridge_0.s0" type="avalon" dir="end" />
  <module
    name="Avalon_MM_byteorder_changer_0"
@@ -167,9 +167,9 @@
   <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA4U23C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_handler_0</parameter>
  </module>
@@ -195,9 +195,9 @@
   <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA4U23C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_0</parameter>
  </module>
@@ -205,9 +205,9 @@
   <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
   <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
-  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE" value="5CSEMA4U23C6" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_1</parameter>
  </module>
@@ -246,7 +246,7 @@
    start="mm_bridge_0.m0"
    end="module_1.avs_cra">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="baseAddress" value="0x0040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
