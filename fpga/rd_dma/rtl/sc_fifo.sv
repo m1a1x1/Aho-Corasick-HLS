@@ -88,7 +88,7 @@ module sc_fifo #(
 				.sclr ());
 	defparam
 		scfifo_component.add_ram_output_register = "OFF",
-		scfifo_component.almost_full_value = 2,
+		scfifo_component.almost_full_value = 4,
 		scfifo_component.intended_device_family = "Cyclone V",
 		scfifo_component.lpm_numwords = 2**ADDR_W,
 		scfifo_component.lpm_showahead = "ON",

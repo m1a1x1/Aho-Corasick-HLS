@@ -17,7 +17,7 @@ module rd_dma #(
 
   input   [AMM_CSR_ADDR_W-1:0]                 amm_slave_csr_address_i,
   input                                        amm_slave_csr_read_i,
-  output  [AMM_CSR_DATA_W-1:0]                 amm_slave_csr_readdata_o,
+  output logic [AMM_CSR_DATA_W-1:0]                 amm_slave_csr_readdata_o,
   input                                        amm_slave_csr_write_i,
   input   [AMM_CSR_DATA_W-1:0]                 amm_slave_csr_writedata_i,
 
@@ -35,7 +35,7 @@ module rd_dma #(
   output                                       ast_source_endofpacket_o,
   output                                       ast_source_startofpacket_o,
 
-  output                                       end_irq_o
+  output  logic                                end_irq_o
 );
 
 logic                      run_rd_stb;
@@ -48,6 +48,7 @@ logic fifo_almost_full;
 logic fifo_empty;
 logic rd;
 logic rd_done_stb;
+logic irq_en;
 
 assign run_rd_stb = ( amm_slave_csr_address_i == RUN ) &&
                     ( amm_slave_csr_write_i          ) &&
@@ -65,6 +66,13 @@ always_ff @( posedge clk_i )
     if( ( amm_slave_csr_write_i           ) && 
         ( amm_slave_csr_address_i == SIZE ) )
     size <= amm_slave_csr_writedata_i;
+  end
+
+always_ff @( posedge clk_i )
+  begin
+    if( ( amm_slave_csr_write_i             ) && 
+        ( amm_slave_csr_address_i == IRQ_EN ) )
+    irq_en <= amm_slave_csr_writedata_i[0];
   end
 
 always_ff @( posedge clk_i )
@@ -147,7 +155,19 @@ assign ast_source_empty_o = '0;
 assign ast_source_startofpacket_o = (seneded_cnt == '0);
 assign ast_source_endofpacket_o   = (seneded_cnt == size);
 
-assign end_irq_o = ast_source_endofpacket_o && ast_source_valid_o && ast_source_ready_i;
+always_ff @( posedge clk_i )
+  begin
+    if( srst_i )
+      end_irq_o <= 1'b0;
+    else
+      begin
+        if( !irq_en )
+          end_irq_o <= 1'b0;
+        else
+          if( ast_source_endofpacket_o && ast_source_valid_o && ast_source_ready_i )
+            end_irq_o <= 1'b1;
+      end
+  end
 
 always_ff @( posedge clk_i )
   begin
