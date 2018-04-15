@@ -1,0 +1,3 @@
+[submodule "fpga/bloom-filter"]
+	path = fpga/bloom-filter
+	url = https://github.com/m1a1x1/bloom-filter
