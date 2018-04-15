@@ -1,0 +1,2107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element Avalon_MM_byteorder_changer_0
+   {
+      datum _sortIndex
+      {
+         value = "39";
+         type = "int";
+      }
+   }
+   element HLS_CTL_0
+   {
+      datum _sortIndex
+      {
+         value = "38";
+         type = "int";
+      }
+   }
+   element HLS_CTL_0.slv
+   {
+      datum baseAddress
+      {
+         value = "8192";
+         type = "String";
+      }
+   }
+   element clk_0
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element handler_0
+   {
+      datum _sortIndex
+      {
+         value = "37";
+         type = "int";
+      }
+   }
+   element handler_0.avs_cra
+   {
+      datum baseAddress
+      {
+         value = "4096";
+         type = "String";
+      }
+   }
+   element mm_clock_crossing_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element module_0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element module_0.avs_cra
+   {
+      datum baseAddress
+      {
+         value = "1984";
+         type = "String";
+      }
+   }
+   element module_1
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element module_1.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element module_10
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+   element module_10.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "576";
+         type = "String";
+      }
+   }
+   element module_11
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
+   element module_11.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "640";
+         type = "String";
+      }
+   }
+   element module_12
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
+   element module_12.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "704";
+         type = "String";
+      }
+   }
+   element module_13
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
+   element module_13.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "768";
+         type = "String";
+      }
+   }
+   element module_14
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
+   element module_14.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "832";
+         type = "String";
+      }
+   }
+   element module_15
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+   }
+   element module_15.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "896";
+         type = "String";
+      }
+   }
+   element module_16
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
+   element module_16.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "960";
+         type = "String";
+      }
+   }
+   element module_17
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+   }
+   element module_17.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1024";
+         type = "String";
+      }
+   }
+   element module_18
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+   }
+   element module_18.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1088";
+         type = "String";
+      }
+   }
+   element module_19
+   {
+      datum _sortIndex
+      {
+         value = "21";
+         type = "int";
+      }
+   }
+   element module_19.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1152";
+         type = "String";
+      }
+   }
+   element module_2
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element module_2.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "64";
+         type = "String";
+      }
+   }
+   element module_20
+   {
+      datum _sortIndex
+      {
+         value = "22";
+         type = "int";
+      }
+   }
+   element module_20.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1216";
+         type = "String";
+      }
+   }
+   element module_21
+   {
+      datum _sortIndex
+      {
+         value = "23";
+         type = "int";
+      }
+   }
+   element module_21.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1280";
+         type = "String";
+      }
+   }
+   element module_22
+   {
+      datum _sortIndex
+      {
+         value = "24";
+         type = "int";
+      }
+   }
+   element module_22.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1344";
+         type = "String";
+      }
+   }
+   element module_23
+   {
+      datum _sortIndex
+      {
+         value = "25";
+         type = "int";
+      }
+   }
+   element module_23.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1408";
+         type = "String";
+      }
+   }
+   element module_24
+   {
+      datum _sortIndex
+      {
+         value = "26";
+         type = "int";
+      }
+   }
+   element module_24.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1472";
+         type = "String";
+      }
+   }
+   element module_25
+   {
+      datum _sortIndex
+      {
+         value = "27";
+         type = "int";
+      }
+   }
+   element module_25.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1536";
+         type = "String";
+      }
+   }
+   element module_26
+   {
+      datum _sortIndex
+      {
+         value = "28";
+         type = "int";
+      }
+   }
+   element module_26.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1600";
+         type = "String";
+      }
+   }
+   element module_27
+   {
+      datum _sortIndex
+      {
+         value = "29";
+         type = "int";
+      }
+   }
+   element module_27.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1664";
+         type = "String";
+      }
+   }
+   element module_28
+   {
+      datum _sortIndex
+      {
+         value = "30";
+         type = "int";
+      }
+   }
+   element module_28.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1728";
+         type = "String";
+      }
+   }
+   element module_29
+   {
+      datum _sortIndex
+      {
+         value = "31";
+         type = "int";
+      }
+   }
+   element module_29.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1792";
+         type = "String";
+      }
+   }
+   element module_3
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element module_3.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "128";
+         type = "String";
+      }
+   }
+   element module_30
+   {
+      datum _sortIndex
+      {
+         value = "32";
+         type = "int";
+      }
+   }
+   element module_30.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1856";
+         type = "String";
+      }
+   }
+   element module_31
+   {
+      datum _sortIndex
+      {
+         value = "33";
+         type = "int";
+      }
+   }
+   element module_31.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1920";
+         type = "String";
+      }
+   }
+   element module_4
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element module_4.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "192";
+         type = "String";
+      }
+   }
+   element module_5
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element module_5.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "256";
+         type = "String";
+      }
+   }
+   element module_6
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element module_6.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "320";
+         type = "String";
+      }
+   }
+   element module_7
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element module_7.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "384";
+         type = "String";
+      }
+   }
+   element module_8
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element module_8.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "448";
+         type = "String";
+      }
+   }
+   element module_9
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element module_9.avs_cra
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "512";
+         type = "String";
+      }
+   }
+   element multiplexer_0
+   {
+      datum _sortIndex
+      {
+         value = "34";
+         type = "int";
+      }
+   }
+   element multiplexer_1
+   {
+      datum _sortIndex
+      {
+         value = "35";
+         type = "int";
+      }
+   }
+   element multiplexer_2
+   {
+      datum _sortIndex
+      {
+         value = "36";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CEBA2F17A7" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="7" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface
+   name="ac_csr"
+   internal="mm_clock_crossing_bridge_0.s0"
+   type="avalon"
+   dir="end" />
+ <interface
+   name="amm_result"
+   internal="Avalon_MM_byteorder_changer_0.mst"
+   type="avalon"
+   dir="start" />
+ <interface name="clk_125m" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="clk_156m"
+   internal="mm_clock_crossing_bridge_0.s0_clk"
+   type="clock"
+   dir="end" />
+ <interface name="irq" internal="handler_0.irq" type="interrupt" dir="end" />
+ <interface name="rst_125m" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="rst_156m"
+   internal="mm_clock_crossing_bridge_0.s0_reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="str_0"
+   internal="module_0.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_1"
+   internal="module_1.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_10"
+   internal="module_10.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_11"
+   internal="module_11.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_12"
+   internal="module_12.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_13"
+   internal="module_13.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_14"
+   internal="module_14.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_15"
+   internal="module_15.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_16"
+   internal="module_16.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_17"
+   internal="module_17.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_18"
+   internal="module_18.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_19"
+   internal="module_19.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_2"
+   internal="module_2.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_20"
+   internal="module_20.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_21"
+   internal="module_21.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_22"
+   internal="module_22.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_23"
+   internal="module_23.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_24"
+   internal="module_24.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_25"
+   internal="module_25.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_26"
+   internal="module_26.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_27"
+   internal="module_27.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_28"
+   internal="module_28.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_29"
+   internal="module_29.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_3"
+   internal="module_3.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_30"
+   internal="module_30.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_31"
+   internal="module_31.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_4"
+   internal="module_4.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_5"
+   internal="module_5.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_6"
+   internal="module_6.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_7"
+   internal="module_7.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_8"
+   internal="module_8.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <interface
+   name="str_9"
+   internal="module_9.str_in"
+   type="avalon_streaming"
+   dir="end" />
+ <module
+   name="Avalon_MM_byteorder_changer_0"
+   kind="Avalon_MM_byteorder_changer"
+   version="1.0"
+   enabled="1">
+  <parameter name="ADDR_WIDTH" value="32" />
+  <parameter name="BURST_WIDTH" value="8" />
+  <parameter name="DATA_WIDTH" value="64" />
+ </module>
+ <module name="HLS_CTL_0" kind="HLS_CTL" version="1.0" enabled="1" />
+ <module name="clk_0" kind="clock_source" version="17.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module name="handler_0" kind="ah_handler" version="1.0" enabled="1">
+  <parameter name="AUTO_AVMM_1_W_ADDRESS_MAP"><![CDATA[<address-map><slave name='Avalon_MM_byteorder_changer_0.slv' start='0x0' end='0x100000000' /></address-map>]]></parameter>
+  <parameter name="AUTO_AVMM_1_W_ADDRESS_WIDTH" value="AddressWidth = 32" />
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_handler_0</parameter>
+ </module>
+ <module
+   name="mm_clock_crossing_bridge_0"
+   kind="altera_avalon_mm_clock_crossing_bridge"
+   version="17.1"
+   enabled="1">
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="COMMAND_FIFO_DEPTH" value="4" />
+  <parameter name="DATA_WIDTH" value="64" />
+  <parameter name="MASTER_SYNC_DEPTH" value="2" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="RESPONSE_FIFO_DEPTH" value="4" />
+  <parameter name="SLAVE_SYNC_DEPTH" value="2" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="14" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
+ </module>
+ <module name="module_0" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_0</parameter>
+ </module>
+ <module name="module_1" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_1</parameter>
+ </module>
+ <module name="module_10" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_10</parameter>
+ </module>
+ <module name="module_11" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_11</parameter>
+ </module>
+ <module name="module_12" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_12</parameter>
+ </module>
+ <module name="module_13" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_13</parameter>
+ </module>
+ <module name="module_14" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_14</parameter>
+ </module>
+ <module name="module_15" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_15</parameter>
+ </module>
+ <module name="module_16" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_16</parameter>
+ </module>
+ <module name="module_17" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_17</parameter>
+ </module>
+ <module name="module_18" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_18</parameter>
+ </module>
+ <module name="module_19" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_19</parameter>
+ </module>
+ <module name="module_2" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_2</parameter>
+ </module>
+ <module name="module_20" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_20</parameter>
+ </module>
+ <module name="module_21" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_21</parameter>
+ </module>
+ <module name="module_22" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_22</parameter>
+ </module>
+ <module name="module_23" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_23</parameter>
+ </module>
+ <module name="module_24" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_24</parameter>
+ </module>
+ <module name="module_25" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_25</parameter>
+ </module>
+ <module name="module_26" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_26</parameter>
+ </module>
+ <module name="module_27" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_27</parameter>
+ </module>
+ <module name="module_28" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_28</parameter>
+ </module>
+ <module name="module_29" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_29</parameter>
+ </module>
+ <module name="module_3" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_3</parameter>
+ </module>
+ <module name="module_30" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_30</parameter>
+ </module>
+ <module name="module_31" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_31</parameter>
+ </module>
+ <module name="module_4" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_4</parameter>
+ </module>
+ <module name="module_5" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_5</parameter>
+ </module>
+ <module name="module_6" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_6</parameter>
+ </module>
+ <module name="module_7" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_7</parameter>
+ </module>
+ <module name="module_8" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_8</parameter>
+ </module>
+ <module name="module_9" kind="ah_module" version="1.0" enabled="1">
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_DEVICE" value="5CEBA2F17A7" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_module_9</parameter>
+ </module>
+ <module name="multiplexer_0" kind="multiplexer" version="17.1" enabled="1">
+  <parameter name="bitsPerSymbol" value="64" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="numInputInterfaces" value="16" />
+  <parameter name="outChannelWidth" value="4" />
+  <parameter name="packetScheduling" value="false" />
+  <parameter name="schedulingSize" value="2" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useHighBitsOfChannel" value="false" />
+  <parameter name="usePackets" value="false" />
+ </module>
+ <module name="multiplexer_1" kind="multiplexer" version="17.1" enabled="1">
+  <parameter name="bitsPerSymbol" value="64" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="numInputInterfaces" value="16" />
+  <parameter name="outChannelWidth" value="4" />
+  <parameter name="packetScheduling" value="false" />
+  <parameter name="schedulingSize" value="2" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useHighBitsOfChannel" value="false" />
+  <parameter name="usePackets" value="false" />
+ </module>
+ <module name="multiplexer_2" kind="multiplexer" version="17.1" enabled="1">
+  <parameter name="bitsPerSymbol" value="64" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="numInputInterfaces" value="2" />
+  <parameter name="outChannelWidth" value="1" />
+  <parameter name="packetScheduling" value="false" />
+  <parameter name="schedulingSize" value="2" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useHighBitsOfChannel" value="false" />
+  <parameter name="usePackets" value="false" />
+ </module>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="handler_0.avmm_1_w"
+   end="Avalon_MM_byteorder_changer_0.slv">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_1.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_2.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_3.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_4.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_5.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_6.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0140" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_7.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0180" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_8.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_9.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0200" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_10.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0240" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_11.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0280" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_12.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x02c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_13.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0300" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_14.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0340" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_15.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0380" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_16.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_17.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_18.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0440" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_19.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0480" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_20.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_21.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0500" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_22.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0540" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_23.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0580" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_24.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_25.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0600" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_26.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0640" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_27.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0680" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_28.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x06c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_29.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0700" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_31.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0780" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_30.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0740" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="module_0.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x07c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="handler_0.avs_cra">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x1000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="HLS_CTL_0.slv">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="multiplexer_0.out"
+   end="multiplexer_2.in0" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="multiplexer_1.out"
+   end="multiplexer_2.in1" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="multiplexer_2.out"
+   end="handler_0.str_in" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_0.result"
+   end="multiplexer_0.in0" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_16.result"
+   end="multiplexer_1.in0" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_1.result"
+   end="multiplexer_0.in1" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_17.result"
+   end="multiplexer_1.in1" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_10.result"
+   end="multiplexer_0.in10" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_26.result"
+   end="multiplexer_1.in10" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_11.result"
+   end="multiplexer_0.in11" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_27.result"
+   end="multiplexer_1.in11" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_12.result"
+   end="multiplexer_0.in12" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_28.result"
+   end="multiplexer_1.in12" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_13.result"
+   end="multiplexer_0.in13" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_29.result"
+   end="multiplexer_1.in13" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_14.result"
+   end="multiplexer_0.in14" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_30.result"
+   end="multiplexer_1.in14" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_15.result"
+   end="multiplexer_0.in15" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_31.result"
+   end="multiplexer_1.in15" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_2.result"
+   end="multiplexer_0.in2" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_18.result"
+   end="multiplexer_1.in2" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_3.result"
+   end="multiplexer_0.in3" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_19.result"
+   end="multiplexer_1.in3" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_4.result"
+   end="multiplexer_0.in4" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_20.result"
+   end="multiplexer_1.in4" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_5.result"
+   end="multiplexer_0.in5" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_21.result"
+   end="multiplexer_1.in5" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_6.result"
+   end="multiplexer_0.in6" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_22.result"
+   end="multiplexer_1.in6" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_7.result"
+   end="multiplexer_0.in7" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_23.result"
+   end="multiplexer_1.in7" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_8.result"
+   end="multiplexer_0.in8" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_24.result"
+   end="multiplexer_1.in8" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_9.result"
+   end="multiplexer_0.in9" />
+ <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="module_25.result"
+   end="multiplexer_1.in9" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="multiplexer_0.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="multiplexer_1.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="multiplexer_2.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_0.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_1.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_2.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_3.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_4.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_5.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_6.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_7.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_8.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_9.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_10.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_11.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_12.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_13.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_14.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_15.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_16.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_17.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_18.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_19.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_20.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_21.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_22.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_23.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_24.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_25.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_26.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_27.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_28.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_29.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_30.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="module_31.clock" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="handler_0.clock" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="HLS_CTL_0.clock_sink" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="Avalon_MM_byteorder_changer_0.clock_sink" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="mm_clock_crossing_bridge_0.m0_clk" />
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="HLS_CTL_0.conduit_end"
+   end="handler_0.amm_res">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="mm_clock_crossing_bridge_0.m0_reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_1.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_2.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_3.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_4.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_5.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_6.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_7.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_8.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_9.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_10.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_11.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_12.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_13.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_14.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_15.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_16.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_17.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_18.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_19.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_20.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_21.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_22.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_23.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_24.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_25.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_26.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_27.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_28.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_29.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_30.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="module_31.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="multiplexer_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="multiplexer_1.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="multiplexer_2.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="handler_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="HLS_CTL_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="Avalon_MM_byteorder_changer_0.reset_sink" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

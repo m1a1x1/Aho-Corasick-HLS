@@ -29,13 +29,13 @@ uint32_t ah_handler( ast_res & str_in,
 
 
   bool success = false;
-  uint64_t symbol = str_in.tryRead( success );
-  while( res_cnt != ( PAGE_SIZE - 1 ) ){
+  uint64_t symbol;
+  while( res_cnt != ( PAGE_SIZE/sizeof(uint64_t) - 1 ) ){
+    symbol = str_in.tryRead( success );
     if( success ){
       amm_res[res_cnt] = symbol;
       res_cnt++; 
     }
-    symbol = str_in.tryRead( success );
   }
   return res_cnt;
 }  
