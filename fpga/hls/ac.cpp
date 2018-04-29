@@ -23,23 +23,25 @@ typedef ihc::mm_master<uint64_t, ihc::aspace<1>,ihc::awidth<32>, ihc::readwrite_
 
 hls_avalon_slave_component 
 component
-uint32_t ah_handler( ast_res & str_in,
-                     amm         & amm_res,
-                     hls_avalon_slave_register_argument uint32_t res_cnt ){
+uint32_t ah_handler( ast_res  & str_in,
+                     amm      & amm_res,
+                     uint64_t * res_cnt
+                     ){
 
-
-  bool success = false;
+  uint64_t cnt     = 0;
+  bool     success = false;
   uint64_t symbol;
-  while( res_cnt != ( PAGE_SIZE/sizeof(uint64_t) - 1 ) ){
+
+  while( cnt != ( PAGE_SIZE/sizeof(uint64_t) ) ){
     symbol = str_in.tryRead( success );
     if( success ){
-      amm_res[res_cnt] = symbol;
-      res_cnt++; 
+      amm_res[cnt] = symbol;
+      cnt++;
+      *( res_cnt ) = cnt; 
     }
   }
-  return res_cnt;
-}  
-
+  return cnt;
+}
 
 #ifdef __ALWAYS_RUN__
 hls_always_run_component
@@ -64,7 +66,7 @@ void ah_module( ast_snk &str_in,
   bool eop = false;
   uint8 symbol = str_in.tryRead( success ,sop, eop );
   pmv_t pmv[TILE_CNT];
-
+  bool exist[TILE_CNT];
 #ifndef __ALWAYS_RUN__
     while( success ){
 #endif
@@ -78,12 +80,14 @@ void ah_module( ast_snk &str_in,
       ac_word node = mem[j][next_state[j] & 0xff ];
       next_state[j] = node.ptr[ symbol.slc<2>(j << 1) ];
       pmv[j] = node.pmv;
+      exist[j] = ( next_state[j] != 0 );
     }
 
     find_info fi;
     fi.pmv = pmv[0] & pmv[1] & pmv[2] & pmv[3];
+    bool next_val = exist[0] & exist[1] & exist[2] & exist[3];
     fi.rule_module_num = id;
-    if( fi.pmv != 0 )
+    if( ( fi.pmv != 0 ) && next_val & eop )
       result.write( fi ); 
 
 #ifndef __ALWAYS_RUN__
@@ -105,12 +109,13 @@ int main( ){
   string line;
   while( getline( input, line ) ){
     info_ac.SetWord(line);
+    info_ac.PrintBinString( line );
   }
 
   cout << "### String ###" << endl;
 
   ifstream t("file");
-  if( !input.is_open() ){
+  if( !t.is_open() ){
     cout << "Not such file!" << endl;
     return -1;
   }
@@ -119,7 +124,6 @@ int main( ){
   info_ac.PrintBinString( buffer );
   info_ac.PrintWordsContent();
   info_ac.SearchInString( buffer );
-  //info_ac.PrintModuleContent( 0 );
 
   csr_ac csr;
   ast_snk snk;
@@ -148,8 +152,8 @@ int main( ){
   node.pmv    = 0;
   
   cout << "!!! Start !!!" << endl;
-  for (int i = 0; i < buffer.length(); i++){
-    snk.write( buffer[i], i == 0, ( i == buffer.length() - 1)  );
+  for (int i = 0; i < buffer.length()-1; i++){
+    snk.write( buffer[i], i == 0, ( i == buffer.length() - 2)  );
   }
 
   cout << "!!! Run !!!" << endl;

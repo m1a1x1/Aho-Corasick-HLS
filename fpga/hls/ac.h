@@ -15,8 +15,8 @@
     (((i) & 0x02ll) ? '1' : '0'), \
     (((i) & 0x01ll) ? '1' : '0')
 
-#define PAGE_SIZE       4096
-#define RULE_MODULE_CNT 2 
+#define PAGE_SIZE       100*4096
+#define RULE_MODULE_CNT 32 
 #define TILE_CNT        4
 #define MEM_WIDTH       256
 
@@ -70,6 +70,10 @@ class InfoAC{
     ac_word mem [RULE_MODULE_CNT][TILE_CNT][MEM_WIDTH];
     rule_module_info module_info[RULE_MODULE_CNT]; 
     std::map<std::string, word_info> words;       
+    std::map<std::string, int> sw_result;       
+    std::map<std::string, int> hw_result;
+    uint32_t sw_total;       
+    uint32_t hw_total;       
   public:
     InfoAC();
     int SetWord( const std::string & word );
@@ -78,6 +82,10 @@ class InfoAC{
     void PrintBinString( const std::string & word );
     void PrintWordsContent();
     void SearchInString( const std::string & text );
+    void SoftFind( const std::string & text );
+    void HwFind( const std::string & word );
+    void PrintResult();
+    void PrintTotalFind();
 #ifdef __APP__
     ac_word GetInfo( const uint8_t & module,
                      const uint8_t & tile_num,

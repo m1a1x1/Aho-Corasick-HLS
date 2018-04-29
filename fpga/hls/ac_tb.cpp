@@ -47,10 +47,17 @@ int InfoAC::SetWord( const std::string & word ){
 
   int module_busy = 0;
   for( int i = 0; i < RULE_MODULE_CNT; i++ ){
-    if( module_info[i].word_in_module >= 24 )
+    if( module_info[i].word_in_module >= sizeof(pmv_t)*8 ){
       module_busy++;
+    }      
+    for( int j = 0; j < TILE_CNT; j++ ){
+      if( ( module_info[i].node_busy[j] + w_length ) >= MEM_WIDTH ){
+        module_busy++;
+        break;
+      }
+    }
   }
-  if( module_busy == RULE_MODULE_CNT ){
+  if( module_busy == ( RULE_MODULE_CNT - 1 ) ){
     printf( "Error: all modules is busy!!!" );
     return -1;
   } 
@@ -78,23 +85,30 @@ int InfoAC::SetWord( const std::string & word ){
            mem[module_busy][i][ptr[i]].pmv = ( 1 << module_info[module_busy].word_in_module ) |  
                                              mem[module_busy][i][ptr[i]].pmv;
            module_info[module_busy].node_busy[i]--;
-           mem[module_busy][i][ptr[i]].ptr[part] = 0;
+           mem[module_busy][i][ptr[i]].ptr[part] = 1;
          } 
          ptr[i] = module_info[module_busy].node_busy[i];
-       }
-       else{
-         if( symbol_num == w_length )
+       } else {
+         if( ( symbol_num > 0 ) && ( local_ptr == 1 ) ){
+           module_info[module_busy].node_busy[i]++;
+           mem[module_busy][i][ptr[i]].ptr[part] = module_info[module_busy].node_busy[i];
+           local_ptr =  module_info[module_busy].node_busy[i];
+         } 
+         if( symbol_num == w_length ){
            mem[module_busy][i][ptr[i]].pmv = ( 1 << module_info[module_busy].word_in_module ) | 
                                              mem[module_busy][i][ptr[i]].pmv; 
+           }
          ptr[i] = local_ptr; 
        }
      }
      symbol_num++;
   }
+
   word_info wi;
   wi.num_module = module_busy;
   wi.word_id    = 1 << module_info[module_busy].word_in_module;
   words[word]   = wi;
+
   module_info[module_busy].word_in_module++;
   return 0;
 }
@@ -112,7 +126,7 @@ void InfoAC::PrintTitleContent( int module_num, int tile_num ){
 void InfoAC::PrintModuleContent( int module_num ){
   for(int i = 0; i < TILE_CNT; i++ ){
     printf("Tile #%d\n", i );
-    printf("+++++++++++++++++++++++++++++++\n");
+    printf("+++++++++++++++++++++++++++++++++++\n");
     PrintTitleContent( module_num, i );
   }
 }
@@ -140,6 +154,38 @@ void InfoAC::SearchInString( const std::string & text ){
     if( pos != std::string::npos ){
       std::cout << "String: " << it->first << ", pos: " << pos << std::endl; 
     }
+  }
+}
+
+void InfoAC::SoftFind( const std::string & text ){
+  #pragma omp for
+  for(std::map<std::string, word_info>::iterator it=words.begin(); it!=words.end(); it++){
+    size_t pos = text.find(it->first);
+    while( pos != std::string::npos ){
+      sw_result[it->first]++;
+      sw_total++;
+      pos = text.find(it->first, pos + 1 );
+    }
+  }
+}
+
+void InfoAC::HwFind( const std::string & word ){
+  hw_result[word]++;
+  hw_total++;
+}
+
+void InfoAC::PrintTotalFind(){
+  cout << "Total find: " << endl;
+  cout << "SW total: " << sw_total << endl;
+  cout << "HW total: " << hw_total << endl;
+}
+
+
+void InfoAC::PrintResult(){
+  std::cout << "### FIND RESULT ###"  << std::endl;
+  printf("| %14s | %6s | %6s |\n", "String", "Soft", "FPGA" );
+  for(std::map<std::string, word_info>::iterator it=words.begin(); it!=words.end(); it++){
+    printf("| %14s | %6d | %6d |\n", it->first.c_str(), sw_result[it->first], hw_result[it->first] );
   }
 }
 
