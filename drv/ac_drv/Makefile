@@ -6,7 +6,7 @@ CROSS_COMPILE ?= arm-linux-gnueabihf-
 
 
 subdir-ccflags-y += -DDEBUG
-obj-m += tst_drv.o
+obj-m += ac_drv.o
 tst_drv-objs := main.o
 
 default:

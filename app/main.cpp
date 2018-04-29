@@ -144,14 +144,14 @@ double PrintSummary( InfoAC & info_ac ){
   clock_gettime( CLOCK_REALTIME, &stop );
 
   // Convert to microseconds
-  sw_time = timespec_to_ns( TimeDiff( start, stop ) ) * 1e6;
+  sw_time = timespec_to_ns( TimeDiff( start, stop ) ) / 1e3;
   hw_time = GetFPGATime();
 
   info_ac.PrintResult();
   info_ac.PrintTotalFind();
   cout << "Time 'software find' vs 'FPGA find': " << endl;
-  cout << "SW : " << sw_time << endl;
-  cout << "HW : " << hw_time << endl;
+  cout << "SW : " << sw_time << " us" << endl;
+  cout << "HW : " << hw_time << " us" << endl;
 }
 
 int main(){

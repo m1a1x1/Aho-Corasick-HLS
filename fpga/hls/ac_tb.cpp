@@ -24,6 +24,8 @@ InfoAC::InfoAC(){
        module_info[i].node_busy[j] = 0;
     }
   }
+  hw_total = 0;
+  sw_total = 0;
   //Init mem
   for( int i = 0; i < RULE_MODULE_CNT; i++ ){
     for( int j = 0; j < TILE_CNT; j++ ){
