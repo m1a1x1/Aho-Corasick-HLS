@@ -18,20 +18,26 @@
 // AC Handler
 #define START_ADDR   0x2
 #define IRQ_ADDR     0x4
+#define IRQ_ACK_ADDR 0x6
 #define RETURN_ADDR  0x8
 #define CNT_RES_ADDR 0xa 
 
 // HLS CTL
-#define CTL_DMA_ADDR 0x0
+#define CTL_DMA_ADDR  0x0
+#define FIND_CNT_ADDR 0x0
+#define RST_ADDR      0x1
+
+// DMA
+#define DMA_IRQ_ADDR  0x3
 
 #define WRITE_CONF ( 1 << 24 )
 #define START   1
 #define IRQ_ON  1
-#define IRQ_OFF 0
+#define IRQ_ACK 1
 #define EOF            ( 0 )
 
-#define BUFFER_SIZE 128*sizeof(uint64_t)
-#define BUFFER_CNT 16
+#define BUFFER_SIZE 100*PAGE_SIZE
+#define BUFFER_CNT 4
 
 void fpga_write(int reg, u32 val, void* fpga_regs);
 uint32_t fpga_read(int reg, void* fpga_regs );
@@ -53,6 +59,7 @@ struct tst_data{
   void *            ac_regs;
   void *            ac_handler;
   void *            led;
+  void *            dma;
   phys_addr_t       desc_phys;
   struct cdev       c_dev;
   int               irq;

@@ -16,7 +16,8 @@
 #include <linux/of_irq.h>
 #include <linux/interrupt.h>
 #include <linux/wait.h>            
-#include <asm/uaccess.h>         
+#include <asm/uaccess.h>      
+#include <linux/uaccess.h>
 #include "tst.h"
 #include "common_ac.h"
 
@@ -29,12 +30,12 @@ inline uint32_t fpga_read(int reg, void* fpga_regs ){
 }
 
 void conf_ac_handler( struct tst_data *td){
-  int rd_ptr = atomic_read( &td->read_ptr );
+  int rd_ptr = atomic_read( &td->irq_cnt );
   fpga_write( CTL_DMA_ADDR, td->dma_buffers[rd_ptr].phys_addr, td->hls_ctl );
-  fpga_write( IRQ_ADDR, IRQ_OFF, td->ac_handler );
-  fpga_write( CNT_RES_ADDR, 0, td->ac_handler );
-  fpga_write( IRQ_ADDR, IRQ_ON, td->ac_handler );
-  fpga_write( START_ADDR, START, td->ac_handler ); 
+  fpga_write( IRQ_ACK_ADDR, IRQ_ACK,                           td->ac_handler );
+  fpga_write( CNT_RES_ADDR, 0,                                 td->ac_handler );
+  fpga_write( IRQ_ADDR,     IRQ_ON,                            td->ac_handler );
+  fpga_write( START_ADDR,   START,                             td->ac_handler ); 
 }
 
 static int dev_open(struct inode *inodep, struct file *filep){
@@ -45,7 +46,7 @@ static int dev_open(struct inode *inodep, struct file *filep){
     return -EBUSY;
   }
  
-  printk( KERN_INFO "Dev open\n");
+  fpga_write( RST_ADDR, 0x1, td->hls_ctl );
   fpga_write( 0x0, 127, td->led ); 
   td->numberOpens++;
   conf_ac_handler( td );
@@ -56,10 +57,11 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
    int search_cnt = 0;
    struct tst_data *td = filep->private_data;
 
-   printk( KERN_INFO "Atomic irq: %d rd %d\n", atomic_read( &td->irq_cnt ), atomic_read( &td->read_ptr ));
+   //printk( KERN_INFO "Atomic irq: %d rd %d\n", atomic_read( &td->irq_cnt ), atomic_read( &td->read_ptr ));
    wait_event_interruptible( td->wq_irq,
                              atomic_read( &td->irq_cnt ) != atomic_read( &td->read_ptr ) );
-   search_cnt = atomic_read( &td->search_cnt);   
+   search_cnt = atomic_read( &td->search_cnt);
+   //printk( "FIND: %x\n", search_cnt );   
    if ( ( copy_to_user( buffer,
                         td->dma_buffers[atomic_read( &td->read_ptr )].virt_addr,
                         search_cnt * sizeof( uint64_t ) ) ) != 0 ){
@@ -112,7 +114,6 @@ static int creat_buffers( struct platform_device *pdev ){
   int i;
   int ret = 0;
   struct tst_data *td = platform_get_drvdata( pdev );
-
   for( i = 0; i < BUFFER_CNT; i++  ){
     td->dma_buffers[i].virt_addr = dmam_alloc_coherent( &pdev->dev, BUFFER_SIZE,
                                                          &td->dma_buffers[i].phys_addr, GFP_KERNEL);
@@ -144,6 +145,7 @@ static void free_buffers( struct platform_device *pdev ){
 
 static irqreturn_t tst_isr(int irq, void *dev_id){
   struct tst_data * td = dev_id; 
+  uint32_t time_work = 0;
 
   if( atomic_read( &td->irq_cnt ) == ( BUFFER_CNT - 1 ) ) 
     atomic_set( &td->irq_cnt, 0 );
@@ -151,9 +153,14 @@ static irqreturn_t tst_isr(int irq, void *dev_id){
     atomic_inc( &td->irq_cnt ); 
   
   atomic_set( &td->search_cnt,
-              fpga_read( CNT_RES_ADDR, td->ac_handler) ); 
+              fpga_read( FIND_CNT_ADDR, td->hls_ctl) ); 
   conf_ac_handler( td );
-  
+
+  if( atomic_read( &td->search_cnt ) != ( BUFFER_SIZE/sizeof(uint64_t ) ) ){ 
+    fpga_write( DMA_IRQ_ADDR, 0x0, td->dma );
+    time_work = fpga_read( 0x0, td->dma );
+    //printk( "Time work %d hw ticks", time_work  ); 
+  }
   
   wake_up_interruptible(&td->wq_irq);
 
@@ -242,16 +249,19 @@ static int parse_dt( struct platform_device *pdev ){
     return -ECANCELED;
   }
 
+  td->dma = ioremap( 0xC0006000, 0x10 );
+  if( IS_ERR( td->dma ) ){
+    dev_err( &pdev->dev, "ioremap DMA error!" );
+    return -ECANCELED;
+  }
 
   return 0;
-
 }
 
 static int tst_probe(struct platform_device *pdev){
    int retval = 0;
    struct tst_data *td = kzalloc( sizeof( struct tst_data ), GFP_KERNEL );
 
-   dev_notice( &pdev->dev, "Start probe." );
    td->DeviceName  = kmalloc( sizeof( DEVICE_NAME ), GFP_KERNEL );
    td-> DeviceClass = kmalloc( sizeof( CLASS_NAME ), GFP_KERNEL );
 
@@ -292,6 +302,7 @@ static int tst_probe(struct platform_device *pdev){
    if( retval < 0 ){
      goto unreg_dev;
    }
+
    retval = creat_buffers( pdev );
    if( retval < 0 ){
      goto unreg_dev;
@@ -303,9 +314,6 @@ static int tst_probe(struct platform_device *pdev){
      goto dma_free;
    }
  
- 
-   dev_notice( &pdev->dev, "Driver probe is end" ); 
-   
    return 0;
 
 dma_free:
