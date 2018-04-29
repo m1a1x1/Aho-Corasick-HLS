@@ -38,8 +38,9 @@
 `timescale 1 ps / 1 ps
 // synopsys translate_on
 module sc_fifo #(
- parameter DATA_W = 64,
- parameter ADDR_W = 6
+ parameter DATA_W            = 64,
+ parameter ADDR_W            = 6,
+ parameter ALMOST_FULL_VALUE = 4
 )(
 	clock,
 	data,
@@ -59,7 +60,7 @@ module sc_fifo #(
 	output	  empty;
 	output	  full;
 	output	[DATA_W-1:0]  q;
-	output	[ADDR_W:0]  usedw;
+	output	[ADDR_W-1:0]  usedw;
 
 	wire  sub_wire0;
 	wire  sub_wire1;
@@ -88,7 +89,7 @@ module sc_fifo #(
 				.sclr ());
 	defparam
 		scfifo_component.add_ram_output_register = "OFF",
-		scfifo_component.almost_full_value = 4,
+		scfifo_component.almost_full_value = ALMOST_FULL_VALUE,
 		scfifo_component.intended_device_family = "Cyclone V",
 		scfifo_component.lpm_numwords = 2**ADDR_W,
 		scfifo_component.lpm_showahead = "ON",

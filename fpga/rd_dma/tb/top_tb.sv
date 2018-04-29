@@ -4,12 +4,13 @@ import rd_dma_regs_pkg::*;
 
 module top_tb;
 
-parameter int AMM_DMA_DATA_W = 64;
-parameter int AMM_DMA_ADDR_W = 32;
-
-parameter int AMM_CSR_DATA_W = 32;
-parameter int AMM_CSR_ADDR_W = 4;
-parameter int BYTE_W = 8;
+parameter int AMM_DMA_DATA_W     = 64;
+parameter int AMM_DMA_ADDR_W     = 32;
+parameter int AMM_DMA_BURST_W    = 11; 
+parameter int AMM_DMA_BURST_SIZE = 128;
+parameter int AMM_CSR_DATA_W     = 32;
+parameter int AMM_CSR_ADDR_W     = 4;
+parameter int BYTE_W             = 8;
 
 //// Testbench settings: ////
 logic                        clk;
@@ -24,6 +25,9 @@ logic  [AMM_CSR_DATA_W-1:0] csr_writedata;
 
 logic  [AMM_DMA_ADDR_W-1:0] amm_dma_address;
 logic                       amm_dma_read;
+
+logic  [AMM_DMA_BURST_W-1:0] amm_dma_burstcount;
+logic                        amm_dma_beginbursttransfer;
 logic  [AMM_DMA_DATA_W-1:0] amm_dma_readdata;
 logic                       amm_dma_readdata_valid;
 logic                       amm_dma_waitreques;
@@ -54,32 +58,36 @@ initial
 //********************************************************************
 //****************************** DUT *********************************
 rd_dma #(
-  .AMM_DMA_DATA_W             ( AMM_DMA_DATA_W     ),
-  .AMM_DMA_ADDR_W             ( AMM_DMA_ADDR_W     ),
-  .AMM_CSR_DATA_W             ( AMM_CSR_DATA_W     ),
-  .AMM_CSR_ADDR_W             ( AMM_CSR_ADDR_W     )
+  .AMM_DMA_DATA_W               ( AMM_DMA_DATA_W             ),
+  .AMM_DMA_ADDR_W               ( AMM_DMA_ADDR_W             ),
+  .AMM_DMA_BURST_W              ( AMM_DMA_BURST_W            ),
+  .AMM_DMA_BURST_SIZE           ( AMM_DMA_BURST_SIZE         ),
+  .AMM_CSR_DATA_W               ( AMM_CSR_DATA_W             ),
+  .AMM_CSR_ADDR_W               ( AMM_CSR_ADDR_W             )
 ) dut (
-  .clk_i                      ( clk                ),
-  .srst_i                     ( rst                ),
+  .clk_i                        ( clk                        ),
+  .srst_i                       ( rst                        ),
 
-  .amm_slave_csr_address_i    ( csr_address        ),
-  .amm_slave_csr_read_i       ( csr_read           ),
-  .amm_slave_csr_readdata_o   ( csr_readdata       ),
-  .amm_slave_csr_write_i      ( csr_write          ),
-  .amm_slave_csr_writedata_i  ( csr_writedata      ),
+  .amm_slave_csr_address_i      ( csr_address                ),
+  .amm_slave_csr_read_i         ( csr_read                   ),
+  .amm_slave_csr_readdata_o     ( csr_readdata               ),
+  .amm_slave_csr_write_i        ( csr_write                  ),
+  .amm_slave_csr_writedata_i    ( csr_writedata              ),
 
-  .amm_dma_address_o          ( amm_dma_address        ),
-  .amm_dma_read_o             ( amm_dma_read           ),
-  .amm_dma_readdata_i         ( amm_dma_readdata       ),
-  .amm_dma_readdata_valid_i   ( amm_dma_readdata_valid ),
-  .amm_dma_waitreques_i       ( amm_dma_waitreques     ),
+  .amm_dma_address_o            ( amm_dma_address            ),
+  .amm_dma_read_o               ( amm_dma_read               ),
+  .amm_dma_burstcount_o         ( amm_dma_burstcount         ),
+  .amm_dma_beginbursttransfer_o ( amm_dma_beginbursttransfer ),
+  .amm_dma_readdata_i           ( amm_dma_readdata           ),
+  .amm_dma_readdata_valid_i     ( amm_dma_readdata_valid     ),
+  .amm_dma_waitreques_i         ( amm_dma_waitreques         ),
 
-  .ast_source_valid_o         (                    ),
-  .ast_source_ready_i         ( 1'b1               ),
-  .ast_source_data_o          (                    ),
-  .ast_source_empty_o         (                    ),
-  .ast_source_startofpacket_o (                    ),
-  .ast_source_endofpacket_o   (                    )
+  .ast_source_valid_o           (                            ),
+  .ast_source_ready_i           ( 1'b1                       ),
+  .ast_source_data_o            (                            ),
+  .ast_source_empty_o           (                            ),
+  .ast_source_startofpacket_o   (                            ),
+  .ast_source_endofpacket_o     (                            )
 );
 
 //********************************************************************
@@ -143,6 +151,7 @@ always_ff @( posedge clk )
     amm_dma_readdata_valid <= amm_dma_read;
     amm_dma_readdata       <= $urandom_range(2**32,0); 
   end
+
 assign amm_dma_waitreques = 1'b0;
 //********************************************************************
 //************************* MAIN FLOW ********************************
