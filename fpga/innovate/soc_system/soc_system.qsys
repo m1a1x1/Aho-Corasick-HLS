@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -79,7 +79,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "9";
          type = "int";
       }
       datum sopceditor_expanded
@@ -99,6 +99,14 @@
       {
          value = "20480";
          type = "String";
+      }
+   }
+   element mm_clock_crossing_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
       }
    }
    element pll_0
@@ -125,11 +133,43 @@
          type = "String";
       }
    }
+   element shared_irq_0
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element st_pipeline_stage_0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
    element system_0
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "8";
          type = "int";
       }
    }
@@ -173,7 +213,7 @@
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface
    name="str_out"
-   internal="bloom_filter_0.ast_source"
+   internal="st_pipeline_stage_0.source0"
    type="avalon_streaming"
    dir="start" />
  <interface
@@ -181,7 +221,6 @@
    internal="clock_bridge_0.out_clk"
    type="clock"
    dir="start" />
- <interface name="sys_rst" internal="clk_0.clk_reset" type="reset" dir="start" />
  <interface
    name="system_0_str_0"
    internal="system_0.str_0"
@@ -347,7 +386,7 @@
   <parameter name="AMM_CSR_DATA_W" value="16" />
   <parameter name="AMM_LUT_ADDR_W" value="20" />
   <parameter name="AMM_LUT_DATA_W" value="8" />
-  <parameter name="AST_SINK_ORDER" value="true" />
+  <parameter name="AST_SINK_ORDER" value="false" />
   <parameter name="AST_SINK_SYMBOLS" value="8" />
   <parameter name="AST_SOURCE_ORDER" value="true" />
   <parameter name="AST_SOURCE_SYMBOLS" value="1" />
@@ -359,7 +398,7 @@
   <parameter name="MIN_STR_SIZE" value="4" />
   <parameter name="OUTPUT_FIFO_DEPTH" value="128" />
  </module>
- <module name="clk_0" kind="clock_source" version="17.1" enabled="1">
+ <module name="clk_0" kind="clock_source" version="16.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
@@ -368,13 +407,13 @@
  <module
    name="clock_bridge_0"
    kind="altera_clock_bridge"
-   version="17.1"
+   version="16.1"
    enabled="1">
-  <parameter name="DERIVED_CLOCK_RATE" value="156250000" />
+  <parameter name="DERIVED_CLOCK_RATE" value="75000000" />
   <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
   <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
  </module>
- <module name="hps_0" kind="altera_hps" version="17.1" enabled="1">
+ <module name="hps_0" kind="altera_hps" version="16.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
   <parameter name="ACV_PHY_CLK_ADD_FR_PHASE" value="0.0" />
@@ -470,9 +509,9 @@
   <parameter name="ENABLE_USER_ECC" value="false" />
   <parameter name="EXPORT_AFI_HALF_CLK" value="false" />
   <parameter name="EXTRA_SETTINGS" value="" />
-  <parameter name="F2H_AXI_CLOCK_FREQ" value="156250000" />
-  <parameter name="F2H_SDRAM0_CLOCK_FREQ" value="156250000" />
-  <parameter name="F2H_SDRAM1_CLOCK_FREQ" value="125000000" />
+  <parameter name="F2H_AXI_CLOCK_FREQ" value="75000000" />
+  <parameter name="F2H_SDRAM0_CLOCK_FREQ" value="75000000" />
+  <parameter name="F2H_SDRAM1_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM2_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM4_CLOCK_FREQ" value="100" />
@@ -484,8 +523,8 @@
   <parameter name="F2SCLK_SDRAMCLK_Enable" value="false" />
   <parameter name="F2SCLK_SDRAMCLK_FREQ" value="0" />
   <parameter name="F2SCLK_WARMRST_Enable" value="false" />
-  <parameter name="F2SDRAM_Type">Avalon-MM Read-Only,Avalon-MM Write-Only</parameter>
-  <parameter name="F2SDRAM_Width" value="64,64" />
+  <parameter name="F2SDRAM_Type" value="Avalon-MM Read-Only" />
+  <parameter name="F2SDRAM_Width" value="64" />
   <parameter name="F2SINTERRUPT_Enable" value="true" />
   <parameter name="F2S_Width" value="2" />
   <parameter name="FIX_READ_LATENCY" value="8" />
@@ -525,7 +564,7 @@
   <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_SPIM1_SCLK_OUT" value="100" />
   <parameter name="GPIO_Enable">No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No</parameter>
   <parameter name="GP_Enable" value="false" />
-  <parameter name="H2F_AXI_CLOCK_FREQ" value="156250000" />
+  <parameter name="H2F_AXI_CLOCK_FREQ" value="75000000" />
   <parameter name="H2F_CTI_CLOCK_FREQ" value="100" />
   <parameter name="H2F_DEBUG_APB_CLOCK_FREQ" value="100" />
   <parameter name="H2F_LW_AXI_CLOCK_FREQ" value="100" />
@@ -904,11 +943,11 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
- <module name="led_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="led_pio" kind="altera_avalon_pio" version="16.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="125000000" />
+  <parameter name="clockRate" value="50000000" />
   <parameter name="direction" value="Output" />
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
@@ -918,7 +957,24 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="7" />
  </module>
- <module name="pll_0" kind="altera_pll" version="17.1" enabled="1">
+ <module
+   name="mm_clock_crossing_bridge_0"
+   kind="altera_avalon_mm_clock_crossing_bridge"
+   version="16.1"
+   enabled="1">
+  <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
+  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="COMMAND_FIFO_DEPTH" value="4" />
+  <parameter name="DATA_WIDTH" value="64" />
+  <parameter name="MASTER_SYNC_DEPTH" value="2" />
+  <parameter name="MAX_BURST_SIZE" value="1" />
+  <parameter name="RESPONSE_FIFO_DEPTH" value="4" />
+  <parameter name="SLAVE_SYNC_DEPTH" value="2" />
+  <parameter name="SYMBOL_WIDTH" value="8" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="32" />
+  <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
+ </module>
+ <module name="pll_0" kind="altera_pll" version="16.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSEBA6U23I7" />
@@ -981,7 +1037,7 @@
   <parameter name="gui_cascade_outclk_index" value="0" />
   <parameter name="gui_channel_spacing" value="0.0" />
   <parameter name="gui_clk_bad" value="false" />
-  <parameter name="gui_device_speed_grade" value="1" />
+  <parameter name="gui_device_speed_grade" value="2" />
   <parameter name="gui_divide_factor_c0" value="1" />
   <parameter name="gui_divide_factor_c1" value="1" />
   <parameter name="gui_divide_factor_c10" value="1" />
@@ -1037,8 +1093,8 @@
   <parameter name="gui_multiply_factor" value="1" />
   <parameter name="gui_number_of_clocks" value="2" />
   <parameter name="gui_operation_mode" value="direct" />
-  <parameter name="gui_output_clock_frequency0" value="156.25" />
-  <parameter name="gui_output_clock_frequency1" value="125.0" />
+  <parameter name="gui_output_clock_frequency0" value="75.0" />
+  <parameter name="gui_output_clock_frequency1" value="50.0" />
   <parameter name="gui_output_clock_frequency10" value="100.0" />
   <parameter name="gui_output_clock_frequency11" value="100.0" />
   <parameter name="gui_output_clock_frequency12" value="100.0" />
@@ -1125,17 +1181,38 @@
   <parameter name="AMM_CSR_ADDR_W" value="4" />
   <parameter name="AMM_CSR_DATA_W" value="32" />
   <parameter name="AMM_DMA_ADDR_W" value="32" />
+  <parameter name="AMM_DMA_BURST_SIZE" value="128" />
+  <parameter name="AMM_DMA_BURST_W" value="11" />
   <parameter name="AMM_DMA_DATA_W" value="64" />
+  <parameter name="AST_SOURCE_EMPTY_W" value="3" />
+ </module>
+ <module name="shared_irq_0" kind="shared_irq" version="1.0" enabled="1">
+  <parameter name="AUTO_INTERRUPT_RECEIVER_0_INTERRUPTS_USED" value="1" />
+  <parameter name="AUTO_INTERRUPT_RECEIVER_1_INTERRUPTS_USED" value="1" />
+ </module>
+ <module
+   name="st_pipeline_stage_0"
+   kind="altera_avalon_st_pipeline_stage"
+   version="16.1"
+   enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="MAX_CHANNEL" value="0" />
+  <parameter name="PIPELINE_READY" value="1" />
+  <parameter name="SYMBOLS_PER_BEAT" value="1" />
+  <parameter name="USE_EMPTY" value="0" />
+  <parameter name="USE_PACKETS" value="1" />
  </module>
  <module name="system_0" kind="ac_system" version="1.0" enabled="1">
-  <parameter name="AUTO_AMM_RESULT_ADDRESS_MAP"><![CDATA[<address-map><slave name='hps_0_bridges.f2h_sdram1_data' start='0x0' end='0x100000000' /></address-map>]]></parameter>
+  <parameter name="AUTO_AMM_RESULT_ADDRESS_MAP"><![CDATA[<address-map><slave name='hps_0_axi_sdram.axi_slave0' start='0x0' end='0x80000000' /><slave name='hps_0_gmac0.axi_slave0' start='0xFF700000' end='0xFF702000' /><slave name='hps_0_gmac1.axi_slave0' start='0xFF702000' end='0xFF704000' /><slave name='hps_0_sdmmc.axi_slave0' start='0xFF704000' end='0xFF705000' /><slave name='hps_0_qspi.axi_slave0' start='0xFF705000' end='0xFF705100' /><slave name='hps_0_fpgamgr.axi_slave0' start='0xFF706000' end='0xFF707000' /><slave name='hps_0_gpio0.axi_slave0' start='0xFF708000' end='0xFF708100' /><slave name='hps_0_gpio1.axi_slave0' start='0xFF709000' end='0xFF709100' /><slave name='hps_0_gpio2.axi_slave0' start='0xFF70A000' end='0xFF70A100' /><slave name='hps_0_l3regs.axi_slave0' start='0xFF800000' end='0xFF801000' /><slave name='hps_0_nand0.axi_slave0' start='0xFF900000' end='0xFF910000' /><slave name='hps_0_qspi.axi_slave1' start='0xFFA00000' end='0xFFA00100' /><slave name='hps_0_usb0.axi_slave0' start='0xFFB00000' end='0xFFB40000' /><slave name='hps_0_usb1.axi_slave0' start='0xFFB40000' end='0xFFB80000' /><slave name='hps_0_nand0.axi_slave1' start='0xFFB80000' end='0xFFB90000' /><slave name='hps_0_fpgamgr.axi_slave1' start='0xFFB90000' end='0xFFB90100' /><slave name='hps_0_dcan0.axi_slave0' start='0xFFC00000' end='0xFFC01000' /><slave name='hps_0_dcan1.axi_slave0' start='0xFFC01000' end='0xFFC02000' /><slave name='hps_0_uart0.axi_slave0' start='0xFFC02000' end='0xFFC02100' /><slave name='hps_0_uart1.axi_slave0' start='0xFFC03000' end='0xFFC03100' /><slave name='hps_0_i2c0.axi_slave0' start='0xFFC04000' end='0xFFC04100' /><slave name='hps_0_i2c1.axi_slave0' start='0xFFC05000' end='0xFFC05100' /><slave name='hps_0_i2c2.axi_slave0' start='0xFFC06000' end='0xFFC06100' /><slave name='hps_0_i2c3.axi_slave0' start='0xFFC07000' end='0xFFC07100' /><slave name='hps_0_timer0.axi_slave0' start='0xFFC08000' end='0xFFC08100' /><slave name='hps_0_timer1.axi_slave0' start='0xFFC09000' end='0xFFC09100' /><slave name='hps_0_sdrctl.axi_slave0' start='0xFFC25000' end='0xFFC26000' /><slave name='hps_0_timer2.axi_slave0' start='0xFFD00000' end='0xFFD00100' /><slave name='hps_0_timer3.axi_slave0' start='0xFFD01000' end='0xFFD01100' /><slave name='hps_0_clkmgr.axi_slave0' start='0xFFD04000' end='0xFFD05000' /><slave name='hps_0_rstmgr.axi_slave0' start='0xFFD05000' end='0xFFD05100' /><slave name='hps_0_sysmgr.axi_slave0' start='0xFFD08000' end='0xFFD08400' /><slave name='hps_0_dma.axi_slave0' start='0xFFE01000' end='0xFFE02000' /><slave name='hps_0_spim0.axi_slave0' start='0xFFF00000' end='0xFFF00100' /><slave name='hps_0_spim1.axi_slave0' start='0xFFF01000' end='0xFFF01100' /><slave name='hps_0_arm_gic_0.axi_slave1' start='0xFFFEC100' end='0xFFFEC200' /><slave name='hps_0_timer.axi_slave0' start='0xFFFEC600' end='0xFFFEC700' /><slave name='hps_0_arm_gic_0.axi_slave0' start='0xFFFED000' end='0xFFFEE000' /><slave name='hps_0_L2.axi_slave0' start='0xFFFEF000' end='0xFFFF0000' /><slave name='hps_0_axi_ocram.axi_slave0' start='0xFFFF0000' end='0x100000000' /></address-map>]]></parameter>
   <parameter name="AUTO_AMM_RESULT_ADDRESS_WIDTH" value="AddressWidth = 32" />
-  <parameter name="AUTO_CLK_125M_CLOCK_DOMAIN" value="7" />
-  <parameter name="AUTO_CLK_125M_CLOCK_RATE" value="125000000" />
-  <parameter name="AUTO_CLK_125M_RESET_DOMAIN" value="7" />
-  <parameter name="AUTO_CLK_156M_CLOCK_DOMAIN" value="6" />
-  <parameter name="AUTO_CLK_156M_CLOCK_RATE" value="156250000" />
-  <parameter name="AUTO_CLK_156M_RESET_DOMAIN" value="6" />
+  <parameter name="AUTO_CLK_125M_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_CLK_125M_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_125M_RESET_DOMAIN" value="6" />
+  <parameter name="AUTO_CLK_156M_CLOCK_DOMAIN" value="5" />
+  <parameter name="AUTO_CLK_156M_CLOCK_RATE" value="75000000" />
+  <parameter name="AUTO_CLK_156M_RESET_DOMAIN" value="5" />
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
@@ -1144,16 +1221,16 @@
  </module>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="system_0.amm_result"
-   end="hps_0.f2h_sdram1_data">
+   end="mm_clock_crossing_bridge_0.s0">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="rd_dma_0.avalon_master"
    end="hps_0.f2h_sdram0_data">
   <parameter name="arbitrationPriority" value="1" />
@@ -1162,7 +1239,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_axi_master"
    end="system_0.ac_csr">
   <parameter name="arbitrationPriority" value="1" />
@@ -1171,7 +1248,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_axi_master"
    end="rd_dma_0.amm_slave_csr">
   <parameter name="arbitrationPriority" value="1" />
@@ -1180,7 +1257,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_axi_master"
    end="bloom_filter_0.amm_slave_csr">
   <parameter name="arbitrationPriority" value="1" />
@@ -1189,7 +1266,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_axi_master"
    end="bloom_filter_0.amm_slave_lut">
   <parameter name="arbitrationPriority" value="1" />
@@ -1198,7 +1275,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_axi_master"
    end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1206,110 +1283,166 @@
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
+   kind="avalon"
+   version="16.1"
+   start="mm_clock_crossing_bridge_0.m0"
+   end="hps_0.f2h_axi_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
    kind="avalon_streaming"
-   version="17.1"
+   version="16.1"
    start="rd_dma_0.ast_source"
    end="bloom_filter_0.ast_sink" />
- <connection kind="clock" version="17.1" start="clk_0.clk" end="pll_0.refclk" />
+ <connection
+   kind="avalon_streaming"
+   version="16.1"
+   start="bloom_filter_0.ast_source"
+   end="st_pipeline_stage_0.sink0" />
+ <connection kind="clock" version="16.1" start="clk_0.clk" end="pll_0.refclk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk0"
    end="system_0.clk_156m" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk0"
    end="rd_dma_0.clock_sink" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
+   start="pll_0.outclk0"
+   end="shared_irq_0.clock_sink" />
+ <connection
+   kind="clock"
+   version="16.1"
    start="pll_0.outclk0"
    end="hps_0.f2h_axi_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk0"
    end="hps_0.f2h_sdram0_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk0"
    end="hps_0.h2f_axi_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk0"
    end="clock_bridge_0.in_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk0"
-   end="bloom_filter_0.main_clock_sink" />
- <connection kind="clock" version="17.1" start="pll_0.outclk1" end="led_pio.clk" />
+   end="mm_clock_crossing_bridge_0.m0_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
+   start="pll_0.outclk0"
+   end="bloom_filter_0.main_clock_sink" />
+ <connection kind="clock" version="16.1" start="pll_0.outclk1" end="led_pio.clk" />
+ <connection
+   kind="clock"
+   version="16.1"
    start="pll_0.outclk1"
    end="system_0.clk_125m" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
    start="pll_0.outclk1"
-   end="hps_0.f2h_sdram1_clock" />
+   end="st_pipeline_stage_0.cr0" />
  <connection
    kind="clock"
-   version="17.1"
+   version="16.1"
+   start="pll_0.outclk1"
+   end="mm_clock_crossing_bridge_0.s0_clk" />
+ <connection
+   kind="clock"
+   version="16.1"
    start="pll_0.outclk1"
    end="bloom_filter_0.src_clock_sink" />
  <connection
    kind="interrupt"
-   version="17.1"
+   version="16.1"
    start="hps_0.f2h_irq0"
-   end="rd_dma_0.interrupt_sender">
-  <parameter name="irqNumber" value="1" />
+   end="shared_irq_0.interrupt_sender">
+  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
-   start="hps_0.f2h_irq0"
+   version="16.1"
+   start="shared_irq_0.interrupt_receiver_0"
+   end="rd_dma_0.interrupt_sender">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="16.1"
+   start="shared_irq_0.interrupt_receiver_1"
    end="system_0.irq">
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="shared_irq_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="16.1"
    start="hps_0.h2f_reset"
    end="clk_0.clk_in_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_reset"
-   end="bloom_filter_0.main_reset_sink" />
- <connection kind="reset" version="17.1" start="hps_0.h2f_reset" end="pll_0.reset" />
+   end="st_pipeline_stage_0.cr0_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
+   start="hps_0.h2f_reset"
+   end="mm_clock_crossing_bridge_0.m0_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
+   start="hps_0.h2f_reset"
+   end="bloom_filter_0.main_reset_sink" />
+ <connection kind="reset" version="16.1" start="hps_0.h2f_reset" end="pll_0.reset" />
+ <connection
+   kind="reset"
+   version="16.1"
    start="hps_0.h2f_reset"
    end="led_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_reset"
    end="rd_dma_0.reset_sink" />
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_reset"
    end="system_0.rst_125m" />
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
    start="hps_0.h2f_reset"
    end="system_0.rst_156m" />
  <connection
    kind="reset"
-   version="17.1"
+   version="16.1"
+   start="hps_0.h2f_reset"
+   end="mm_clock_crossing_bridge_0.s0_reset" />
+ <connection
+   kind="reset"
+   version="16.1"
    start="hps_0.h2f_reset"
    end="bloom_filter_0.src_reset_sink" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="sjtag_sim/altera_soft_core_jtag_io/altera_soft_core_jtag_io.v"
+   type="VERILOG"
+   library="sjtag" />
+ <file path="sjtag_sim/sjtag.v" type="VERILOG" />
+ <topLevel name="sjtag" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

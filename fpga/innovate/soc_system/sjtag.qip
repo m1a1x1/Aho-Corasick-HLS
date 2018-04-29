@@ -1,0 +1,31 @@
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_TOOL_NAME "altera_soft_core_jtag_io"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_TOOL_VERSION "17.1"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_TOOL_ENV "mwpim"
+set_global_assignment -library "sjtag" -name MISC_FILE [file join $::quartus(qip_path) "sjtag.cmp"]
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_GENERATED_DEVICE_FAMILY "{Cyclone V}"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_QSYS_MODE "UNKNOWN"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_NAME "c2p0YWc="
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_DISPLAY_NAME "QWx0ZXJhIFNvZnQgQ29yZSBKVEFHIElP"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_VERSION "MTcuMQ=="
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_DESCRIPTION "VGhpcyBzb2Z0IEpUQUcgSS9PIG1lZ2FmdW5jdGlvbiwgYWx0ZXJhX3NvZnRfY29yZV9qdGFnX2lvLCBwcm92aWRlcyBhIHN0YW5kYXJkIEpUQUcgaW50ZXJmYWNlIHRoYXQgY29udHJvbHMgYWxsIEpUQUcgYmFzZWQgU0xEIGRlYnVnIG5vZGVzLjxicj4gIFVuZGVyIHRoZSBob29kLCBpdCByZWFsbHkgY29udHJvbHMgU0xEIEpUQUcgaHViIHRvIHdoaWNoIFNMRCBkZWJ1ZyBub2RlcyBjb25uZWN0LiAgT3B0aW9uYWxseSwgaXQgcHJvdmlkZXMgYSBzaWduYWwgdG8gc2VsZWN0IHdoZXRoZXIgU0xEIEpUQUcgaHViIGlzIGNvbnRyb2xsZWQgYnkgdGhlIEpUQUcgSS9PPGJyPm9uIHRoaXMgbWVnYWZ1bmN0aW9uIG9yIGJ5IHRoZSBKVEFHIEkvTyBvbiB0aGUgZGV2aWNlIEpUQUcgaGFyZCBjb250cm9sbGVyLgpBIG1pbmltYWwgSlRBRyBjb250cm9sbGVyIGlzIGltcGxlbWVudGVkIHRvIGFsbG93IGZ1bGwgb3BlcmF0aW9ucyBvZiB0b29sczxicj50aGF0IGNvbW11bmljYXRlIHRvIFNMRCBkZWJ1ZyBub2RlcyBjb25uZWN0ZWQgdG8gU0xEIEpUQUcgaHViLiAgVGhlIElSIGluc3RydWN0aW9ucyBpbXBsZW1lbnRlZCBhcmUgQllQQVNTLCBJRENPREUsIFVTUjAsIGFuZCBVU1IxLjxicj5BbGwgb3RoZXIgSVIgdmFsdWVzIGFyZSBtYXBwZWQgdG8gQllQQVNTLiAgVGhpcyBKVEFHIGNvbnRyb2xsZXIgcmV0dXJucyBJRENPREUgdmFsdWUsIDB4MDIwMDMwREQsIHdoaWNoIGlzIGFzc2lnbmVkIHRvIEFsdGVyYSBzb2Z0IEpUQUcgY29udHJvbGxlci48YnI+VGhlIHRkbyBvdXRwdXQgaXMgbmV2ZXIgdHJpLXN0YXRlZCwgd2hpY2ggZG9lcyBub3QgY29uZm9ybSB0byB0aGUgSlRBRyBzdGFuZGFyZC4gCk9ubHkgb25lIGluc3RhbmNlIG9mIHN1Y2ggbWVnYWZ1bmN0aW9uIGlzIGFsbG93ZWQgd2l0aGluIG9uZSBwcm9qZWN0Lg=="
+set_global_assignment -entity "sjtag" -library "sjtag" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0pUQUdfSU9fU0VMRUNUSU9O::MQ==::RU5BQkxFX0pUQUdfSU9fU0VMRUNUSU9O"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_NAME "YWx0ZXJhX3NvZnRfY29yZV9qdGFnX2lv"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_DISPLAY_NAME "QWx0ZXJhIFNvZnQgQ29yZSBKVEFHIElP"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_VERSION "MTcuMQ=="
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_DESCRIPTION "VGhpcyBzb2Z0IEpUQUcgSS9PIG1lZ2FmdW5jdGlvbiwgYWx0ZXJhX3NvZnRfY29yZV9qdGFnX2lvLCBwcm92aWRlcyBhIHN0YW5kYXJkIEpUQUcgaW50ZXJmYWNlIHRoYXQgY29udHJvbHMgYWxsIEpUQUcgYmFzZWQgU0xEIGRlYnVnIG5vZGVzLjxicj4gIFVuZGVyIHRoZSBob29kLCBpdCByZWFsbHkgY29udHJvbHMgU0xEIEpUQUcgaHViIHRvIHdoaWNoIFNMRCBkZWJ1ZyBub2RlcyBjb25uZWN0LiAgT3B0aW9uYWxseSwgaXQgcHJvdmlkZXMgYSBzaWduYWwgdG8gc2VsZWN0IHdoZXRoZXIgU0xEIEpUQUcgaHViIGlzIGNvbnRyb2xsZWQgYnkgdGhlIEpUQUcgSS9PPGJyPm9uIHRoaXMgbWVnYWZ1bmN0aW9uIG9yIGJ5IHRoZSBKVEFHIEkvTyBvbiB0aGUgZGV2aWNlIEpUQUcgaGFyZCBjb250cm9sbGVyLgpBIG1pbmltYWwgSlRBRyBjb250cm9sbGVyIGlzIGltcGxlbWVudGVkIHRvIGFsbG93IGZ1bGwgb3BlcmF0aW9ucyBvZiB0b29sczxicj50aGF0IGNvbW11bmljYXRlIHRvIFNMRCBkZWJ1ZyBub2RlcyBjb25uZWN0ZWQgdG8gU0xEIEpUQUcgaHViLiAgVGhlIElSIGluc3RydWN0aW9ucyBpbXBsZW1lbnRlZCBhcmUgQllQQVNTLCBJRENPREUsIFVTUjAsIGFuZCBVU1IxLjxicj5BbGwgb3RoZXIgSVIgdmFsdWVzIGFyZSBtYXBwZWQgdG8gQllQQVNTLiAgVGhpcyBKVEFHIGNvbnRyb2xsZXIgcmV0dXJucyBJRENPREUgdmFsdWUsIDB4MDIwMDMwREQsIHdoaWNoIGlzIGFzc2lnbmVkIHRvIEFsdGVyYSBzb2Z0IEpUQUcgY29udHJvbGxlci48YnI+VGhlIHRkbyBvdXRwdXQgaXMgbmV2ZXIgdHJpLXN0YXRlZCwgd2hpY2ggZG9lcyBub3QgY29uZm9ybSB0byB0aGUgSlRBRyBzdGFuZGFyZC4gCk9ubHkgb25lIGluc3RhbmNlIG9mIHN1Y2ggbWVnYWZ1bmN0aW9uIGlzIGFsbG93ZWQgd2l0aGluIG9uZSBwcm9qZWN0Lg=="
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_PARAMETER "ZGV2aWNlX2ZhbWlseQ==::Q3ljbG9uZSBW::ZGV2aWNlX2ZhbWlseQ=="
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0pUQUdfSU9fU0VMRUNUSU9O::MQ==::RU5BQkxFX0pUQUdfSU9fU0VMRUNUSU9O"
+
+set_global_assignment -library "sjtag" -name VERILOG_FILE [file join $::quartus(qip_path) "sjtag.v"]
+
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_TOOL_NAME "altera_soft_core_jtag_io"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_TOOL_VERSION "17.1"
+set_global_assignment -entity "altera_soft_core_jtag_io" -library "sjtag" -name IP_TOOL_ENV "mwpim"

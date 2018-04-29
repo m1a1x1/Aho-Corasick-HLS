@@ -1,0 +1,86 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 224 216)
+	(text "sjtag" (rect 99 -1 116 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 200 20 212)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "tms" (rect 0 0 15 12)(font "Arial" (font_size 8)))
+		(text "tms" (rect 4 61 22 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 80 72)(line_width 1))
+	)
+	(port
+		(pt 0 88)
+		(input)
+		(text "tdi" (rect 0 0 8 12)(font "Arial" (font_size 8)))
+		(text "tdi" (rect 4 77 22 88)(font "Arial" (font_size 8)))
+		(line (pt 0 88)(pt 80 88)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "tck" (rect 0 0 11 12)(font "Arial" (font_size 8)))
+		(text "tck" (rect 4 133 22 144)(font "Arial" (font_size 8)))
+		(line (pt 0 144)(pt 80 144)(line_width 1))
+	)
+	(port
+		(pt 0 184)
+		(input)
+		(text "select_this" (rect 0 0 41 12)(font "Arial" (font_size 8)))
+		(text "select_this" (rect 4 173 70 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 80 184)(line_width 1))
+	)
+	(port
+		(pt 0 104)
+		(output)
+		(text "tdo" (rect 0 0 11 12)(font "Arial" (font_size 8)))
+		(text "tdo" (rect 4 93 22 104)(font "Arial" (font_size 8)))
+		(line (pt 0 104)(pt 80 104)(line_width 1))
+	)
+	(drawing
+		(text "jtag" (rect 60 43 144 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "tms" (rect 85 67 188 144)(font "Arial" (color 0 0 0)))
+		(text "tdi" (rect 85 83 188 176)(font "Arial" (color 0 0 0)))
+		(text "tdo" (rect 85 99 188 208)(font "Arial" (color 0 0 0)))
+		(text "tck" (rect 64 115 146 243)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 85 139 188 288)(font "Arial" (color 0 0 0)))
+		(text "select_this" (rect 18 155 102 323)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "select_this" (rect 85 179 236 368)(font "Arial" (color 0 0 0)))
+		(text " altera_soft_core_jtag_io " (rect 115 200 386 410)(font "Arial" ))
+		(line (pt 80 32)(pt 144 32)(line_width 1))
+		(line (pt 144 32)(pt 144 200)(line_width 1))
+		(line (pt 80 200)(pt 144 200)(line_width 1))
+		(line (pt 80 32)(pt 80 200)(line_width 1))
+		(line (pt 81 52)(pt 81 108)(line_width 1))
+		(line (pt 82 52)(pt 82 108)(line_width 1))
+		(line (pt 81 124)(pt 81 148)(line_width 1))
+		(line (pt 82 124)(pt 82 148)(line_width 1))
+		(line (pt 81 164)(pt 81 188)(line_width 1))
+		(line (pt 82 164)(pt 82 188)(line_width 1))
+		(line (pt 0 0)(pt 224 0)(line_width 1))
+		(line (pt 224 0)(pt 224 216)(line_width 1))
+		(line (pt 0 216)(pt 224 216)(line_width 1))
+		(line (pt 0 0)(pt 0 216)(line_width 1))
+	)
+)

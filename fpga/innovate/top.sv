@@ -74,14 +74,22 @@ module top(
     input               HPS_USB_NXT,
     output              HPS_USB_STP,
 
-    //////////// KEY //////////
-    input    [ 1: 0]    KEY,
-
     //////////// LED //////////
     output   [ 7: 0]    LED,
 
-    //////////// SW //////////
-    input    [ 3: 0]    SW
+    input gpio0, 
+    input gpio4, 
+    input gpio8, 
+     
+    output gpio1,
+    output gpio2,
+    output gpio3,
+    output gpio9,
+     
+    output gpio5,
+    output gpio6,
+    output gpio7  
+   
 );
 
 
@@ -99,7 +107,10 @@ assign fpga_clk_50 = FPGA_CLK1_50;
 
 
 logic [7:0]  str_data;
+logic        str_valid_tmp;
 logic        str_valid;
+logic        str_ready;
+logic [31:0] str_ready_per_module;
 logic        str_startofpacket;
 logic        str_endofpacket;
 	
@@ -112,6 +123,7 @@ logic        str_endofpacket;
 soc_system u0(
                //Clock&Reset
                .clk_in_clk(FPGA_CLK1_50),                                      //                            clk.clk
+	       .hps_0_f2h_cold_reset_req_reset_n (1'b1),
                //HPS ddr3
                .memory_mem_a(HPS_DDR3_ADDR),                                //                         memory.mem_a
                .memory_mem_ba(HPS_DDR3_BA),                                 //                               .mem_ba
@@ -194,205 +206,227 @@ soc_system u0(
   .str_out_endofpacket   ( str_endofpacket   ),
   .str_out_data          ( str_data          ),
   .str_out_empty         (                   ),
-  .str_out_ready         ( 1'b1              ),
+  .str_out_ready         ( str_ready         ),
   .str_out_startofpacket ( str_startofpacket ),
-  .str_out_valid         ( str_valid         ),
-
-  .system_0_str_0_data          ( str_data          ),
-  .system_0_str_0_ready         (                   ),
+  .str_out_valid         ( str_valid_tmp     ),
+  
+  .system_0_str_0_data          ( str_data                ),
+  .system_0_str_0_ready         ( str_ready_per_module[0] ),
   .system_0_str_0_valid         ( str_valid         ),
   .system_0_str_0_startofpacket ( str_startofpacket ),
   .system_0_str_0_endofpacket   ( str_endofpacket   ),
-
+  
   .system_0_str_1_data          ( str_data          ),
-  .system_0_str_1_ready         (                   ),
+  .system_0_str_1_ready         ( str_ready_per_module[1]                  ),
   .system_0_str_1_valid         ( str_valid         ),
   .system_0_str_1_startofpacket ( str_startofpacket ),
   .system_0_str_1_endofpacket   ( str_endofpacket   ),
-
+  
   .system_0_str_2_data          ( str_data          ),
-  .system_0_str_2_ready         (                   ),
+  .system_0_str_2_ready         ( str_ready_per_module[2] ),
   .system_0_str_2_valid         ( str_valid         ),
   .system_0_str_2_startofpacket ( str_startofpacket ),
   .system_0_str_2_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_3_data          ( str_data          ),
-  .system_0_str_3_ready         (                   ),
+  .system_0_str_3_ready         (  str_ready_per_module[3]                 ),
   .system_0_str_3_valid         ( str_valid         ),
   .system_0_str_3_startofpacket ( str_startofpacket ),
   .system_0_str_3_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_4_data          ( str_data          ),
-  .system_0_str_4_ready         (                   ),
+  .system_0_str_4_ready         ( str_ready_per_module[4]                  ),
   .system_0_str_4_valid         ( str_valid         ),
   .system_0_str_4_startofpacket ( str_startofpacket ),
   .system_0_str_4_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_5_data          ( str_data          ),
-  .system_0_str_5_ready         (                   ),
+  .system_0_str_5_ready         ( str_ready_per_module[5]                  ),
   .system_0_str_5_valid         ( str_valid         ),
   .system_0_str_5_startofpacket ( str_startofpacket ),
   .system_0_str_5_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_6_data          ( str_data          ),
-  .system_0_str_6_ready         (                   ),
+  .system_0_str_6_ready         ( str_ready_per_module[6]                  ),
   .system_0_str_6_valid         ( str_valid         ),
   .system_0_str_6_startofpacket ( str_startofpacket ),
   .system_0_str_6_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_7_data          ( str_data          ),
-  .system_0_str_7_ready         (                   ),
+  .system_0_str_7_ready         ( str_ready_per_module[7]                  ),
   .system_0_str_7_valid         ( str_valid         ),
   .system_0_str_7_startofpacket ( str_startofpacket ),
   .system_0_str_7_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_8_data          ( str_data          ),
-  .system_0_str_8_ready         (                   ),
+  .system_0_str_8_ready         ( str_ready_per_module[8]                  ),
   .system_0_str_8_valid         ( str_valid         ),
   .system_0_str_8_startofpacket ( str_startofpacket ),
   .system_0_str_8_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_9_data          ( str_data          ),
-  .system_0_str_9_ready         (                   ),
+  .system_0_str_9_ready         ( str_ready_per_module[9]                  ),
   .system_0_str_9_valid         ( str_valid         ),
   .system_0_str_9_startofpacket ( str_startofpacket ),
   .system_0_str_9_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_10_data          ( str_data          ),
-  .system_0_str_10_ready         (                   ),
+  .system_0_str_10_ready         ( str_ready_per_module[10]                  ),
   .system_0_str_10_valid         ( str_valid         ),
   .system_0_str_10_startofpacket ( str_startofpacket ),
   .system_0_str_10_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_11_data          ( str_data          ),
-  .system_0_str_11_ready         (                   ),
+  .system_0_str_11_ready         ( str_ready_per_module[11]                  ),
   .system_0_str_11_valid         ( str_valid         ),
   .system_0_str_11_startofpacket ( str_startofpacket ),
   .system_0_str_11_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_12_data          ( str_data          ),
-  .system_0_str_12_ready         (                   ),
+  .system_0_str_12_ready         ( str_ready_per_module[12]                  ),
   .system_0_str_12_valid         ( str_valid         ),
   .system_0_str_12_startofpacket ( str_startofpacket ),
   .system_0_str_12_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_13_data          ( str_data          ),
-  .system_0_str_13_ready         (                   ),
+  .system_0_str_13_ready         ( str_ready_per_module[13]                  ),
   .system_0_str_13_valid         ( str_valid         ),
   .system_0_str_13_startofpacket ( str_startofpacket ),
   .system_0_str_13_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_14_data          ( str_data          ),
-  .system_0_str_14_ready         (                   ),
+  .system_0_str_14_ready         ( str_ready_per_module[14]                  ),
   .system_0_str_14_valid         ( str_valid         ),
   .system_0_str_14_startofpacket ( str_startofpacket ),
   .system_0_str_14_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_15_data          ( str_data          ),
-  .system_0_str_15_ready         (                   ),
+  .system_0_str_15_ready         ( str_ready_per_module[15]                  ),
   .system_0_str_15_valid         ( str_valid         ),
   .system_0_str_15_startofpacket ( str_startofpacket ),
   .system_0_str_15_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_16_data          ( str_data          ),
-  .system_0_str_16_ready         (                   ),
+  .system_0_str_16_ready         ( str_ready_per_module[16]                  ),
   .system_0_str_16_valid         ( str_valid         ),
   .system_0_str_16_startofpacket ( str_startofpacket ),
   .system_0_str_16_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_17_data          ( str_data          ),
-  .system_0_str_17_ready         (                   ),
+  .system_0_str_17_ready         ( str_ready_per_module[17]                  ),
   .system_0_str_17_valid         ( str_valid         ),
   .system_0_str_17_startofpacket ( str_startofpacket ),
   .system_0_str_17_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_18_data          ( str_data          ),
-  .system_0_str_18_ready         (                   ),
+  .system_0_str_18_ready         ( str_ready_per_module[18]                  ),
   .system_0_str_18_valid         ( str_valid         ),
   .system_0_str_18_startofpacket ( str_startofpacket ),
   .system_0_str_18_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_19_data          ( str_data          ),
-  .system_0_str_19_ready         (                   ),
+  .system_0_str_19_ready         ( str_ready_per_module[19]                  ),
   .system_0_str_19_valid         ( str_valid         ),
   .system_0_str_19_startofpacket ( str_startofpacket ),
   .system_0_str_19_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_20_data          ( str_data          ),
-  .system_0_str_20_ready         (                   ),
+  .system_0_str_20_ready         ( str_ready_per_module[20]                  ),
   .system_0_str_20_valid         ( str_valid         ),
   .system_0_str_20_startofpacket ( str_startofpacket ),
   .system_0_str_20_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_21_data          ( str_data          ),
-  .system_0_str_21_ready         (                   ),
+  .system_0_str_21_ready         ( str_ready_per_module[21]                  ),
   .system_0_str_21_valid         ( str_valid         ),
   .system_0_str_21_startofpacket ( str_startofpacket ),
   .system_0_str_21_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_22_data          ( str_data          ),
-  .system_0_str_22_ready         (                   ),
+  .system_0_str_22_ready         ( str_ready_per_module[22]                  ),
   .system_0_str_22_valid         ( str_valid         ),
   .system_0_str_22_startofpacket ( str_startofpacket ),
   .system_0_str_22_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_23_data          ( str_data          ),
-  .system_0_str_23_ready         (                   ),
+  .system_0_str_23_ready         ( str_ready_per_module[23]                  ),
   .system_0_str_23_valid         ( str_valid         ),
   .system_0_str_23_startofpacket ( str_startofpacket ),
   .system_0_str_23_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_24_data          ( str_data          ),
-  .system_0_str_24_ready         (                   ),
+  .system_0_str_24_ready         ( str_ready_per_module[24]                  ),
   .system_0_str_24_valid         ( str_valid         ),
   .system_0_str_24_startofpacket ( str_startofpacket ),
   .system_0_str_24_endofpacket   ( str_endofpacket   ),
 
 
   .system_0_str_25_data          ( str_data          ),
-  .system_0_str_25_ready         (                   ),
+  .system_0_str_25_ready         ( str_ready_per_module[25]                  ),
   .system_0_str_25_valid         ( str_valid         ),
   .system_0_str_25_startofpacket ( str_startofpacket ),
   .system_0_str_25_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_26_data          ( str_data          ),
-  .system_0_str_26_ready         (                   ),
+  .system_0_str_26_ready         ( str_ready_per_module[26]                  ),
   .system_0_str_26_valid         ( str_valid         ),
   .system_0_str_26_startofpacket ( str_startofpacket ),
   .system_0_str_26_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_27_data          ( str_data          ),
-  .system_0_str_27_ready         (                   ),
+  .system_0_str_27_ready         ( str_ready_per_module[27]                  ),
   .system_0_str_27_valid         ( str_valid         ),
   .system_0_str_27_startofpacket ( str_startofpacket ),
   .system_0_str_27_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_28_data          ( str_data          ),
-  .system_0_str_28_ready         (                   ),
+  .system_0_str_28_ready         ( str_ready_per_module[28]                  ),
   .system_0_str_28_valid         ( str_valid         ),
   .system_0_str_28_startofpacket ( str_startofpacket ),
   .system_0_str_28_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_29_data          ( str_data          ),
-  .system_0_str_29_ready         (                   ),
+  .system_0_str_29_ready         ( str_ready_per_module[29]                  ),
   .system_0_str_29_valid         ( str_valid         ),
   .system_0_str_29_startofpacket ( str_startofpacket ),
   .system_0_str_29_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_30_data          ( str_data          ),
-  .system_0_str_30_ready         (                   ),
+  .system_0_str_30_ready         ( str_ready_per_module[30]                  ),
   .system_0_str_30_valid         ( str_valid         ),
   .system_0_str_30_startofpacket ( str_startofpacket ),
   .system_0_str_30_endofpacket   ( str_endofpacket   ),
 
   .system_0_str_31_data          ( str_data          ),
-  .system_0_str_31_ready         (                   ),
+  .system_0_str_31_ready         ( str_ready_per_module[31]                  ),
   .system_0_str_31_valid         ( str_valid         ),
   .system_0_str_31_startofpacket ( str_startofpacket ),
   .system_0_str_31_endofpacket   ( str_endofpacket   )
+  
 );
+
+assign str_ready = &( str_ready_per_module );
+assign str_valid = str_ready && str_valid_tmp;
 
 assign LED[0] = 1'b1;
 
+sjtag #(
+  .ENABLE_JTAG_IO_SELECTION  ( 1                     )
+	) sj (
+  .tms                 ( gpio4                 ),
+  .tdi                 ( gpio8                 ),
+  .tdo                 ( gpio2                 ),
+  .tck                 ( gpio0                 ),
+  .select_this         ( 1'b1                  )
+	);
+
+assign gpio1 = 1'b0; 
+assign gpio3 = 1'b1; 
+assign gpio9 = 1'b0; 
+
+
+assign gpio5 = 1'b0; 
+assign gpio6 = 1'b0; 
+assign gpio7 = 1'b0; 
 
 endmodule
